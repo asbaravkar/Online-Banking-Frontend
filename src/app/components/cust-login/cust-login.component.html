@@ -1,0 +1,43 @@
+<div class="text-center my-3">
+    <h2>Customer Login</h2>
+</div>
+<div class="container align-center w-25 mt-4">
+    <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm)">
+        <!-- Email -->
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" name="customerEmail" #customerEmail="ngModel" [(ngModel)]="custservice.customer.customerEmail" 
+          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter valid email" required email>
+          <div *ngIf="!customerEmail?.valid && (customerEmail?.dirty || customerEmail?.touched)" class="error">
+                <div *ngIf="customerEmail.errors?.required">
+                    <small class="text-danger">Email required</small>
+                </div>
+                <div *ngIf="customerEmail.errors?.email">
+                    <small class="text-danger">Invalid email format</small>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Login -->
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" name="customerPassword" 
+          #customerPassword="ngModel" [(ngModel)]="custservice.customer.customerPassword" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" required>
+          <div *ngIf="!customerPassword?.valid && (customerPassword?.dirty || customerPassword?.touched)" class="error">
+            <div *ngIf="customerPassword.errors?.required">
+                <small class="text-danger">Password required</small>
+            </div>
+            <div *ngIf="customerPassword.errors?.pattern">
+                <small class="text-danger">Minimum 8 characters and atleast one lowercase, uppercase, special, number</small>
+            </div>
+        </div>
+        </div>
+        <button type="submit" [disabled]="custLoginForm.invalid" class="btn btn-primary mt-3 w-100">Login</button>
+    </form>
+    <div class="text-center my-4">
+        <a href="">Register?</a><br>
+        <a href="">Forgot Password?</a><br>
+        <a href="">Forgot Id?</a>
+    </div>
+</div>
+

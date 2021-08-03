@@ -1,0 +1,25 @@
+<div class="text-center my-3">
+    <h2>Account Opening Requests</h2>
+</div>
+
+<!-- List of unapproved requests -->
+<table class="table table-bordered text-center mt-5 table-hover">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>View Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- write loop of ngFor 'unapprovedAccountList' and display account details below -->
+        <tr>
+            <td>Customer ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td><a class="btn btn-primary" [routerLink]="['details/', 1]">View</a></td>
+            <!-- in above td change '1' as userid -->
+        </tr>
+    </tbody>
+</table>

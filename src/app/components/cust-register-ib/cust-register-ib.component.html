@@ -1,0 +1,119 @@
+<div class="text-center mt-3">
+    <h2>Register for Internet Banking</h2>
+</div>
+
+<!-- form -->
+<div class="container align-center py-3 border">
+    <form #ibRegisterForm="ngForm" (ngSubmit)="registerInternetBanking(ibRegisterForm)">
+        <div class="text-center">
+            <!-- accountNumber -->
+        <div class="row mt-5 form-group">
+            <div class="col-md-6">
+                <label for=""><h5>Account Number<span class="text-danger">*</span></h5></label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input name="accountNumber" #accountNumber="ngModel" [(ngModel)]="ibRegister.accountNumber" type="number" 
+                placeholder="Account Number" class="form-control" required min=1000000000 max=9999999999>
+                <div *ngIf="!accountNumber?.valid && (accountNumber?.dirty || accountNumber?.touched)" class="error">
+                    <div *ngIf="accountNumber.errors?.required">
+                        <small class="text-danger">accountNumber required</small>
+                    </div>
+                    <div *ngIf="accountNumber.errors?.min || accountNumber.errors?.max">
+                        <small class="text-danger">Account Number must be 10 digit number</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- loginPassword -->
+        <div class="row mt-3 form-group">
+            <div class="col-md-6">
+                <label for=""><h5>Login Password<span class="text-danger">*</span></h5></label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input name="loginPassword" #loginPassword="ngModel" [(ngModel)]="ibRegister.loginPassword" type="text" placeholder="Login Password" 
+                class="form-control" required>
+                <div *ngIf="!loginPassword?.valid && (loginPassword?.dirty || loginPassword?.touched)" class="error">
+                    <div *ngIf="loginPassword.errors?.required">
+                        <small class="text-danger">Login Password required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- confirmLoginPassword -->
+        <div class="row mt-3 form-group">
+            <div class="col-md-6">
+                <label for=""><h5>Confirm Login Password<span class="text-danger">*</span></h5></label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input name="confirmLoginPassword" #confirmLoginPassword="ngModel" [(ngModel)]="ibRegister.confirmLoginPassword" type="text"
+                 placeholder="Confirm Login Password" class="form-control" required>
+                 <div *ngIf="!confirmLoginPassword?.valid && (confirmLoginPassword?.dirty || confirmLoginPassword?.touched)" class="error">
+                    <div *ngIf="confirmLoginPassword.errors?.required">
+                        <small class="text-danger">Login Password required</small>
+                    </div>
+                    <!-- Check if both passowrd are same -->
+                    <!-- <div *ngIf="confirmLoginPassword.errors?.minlength">
+                        <small class="text-danger">OTP must be 4 digit number</small>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- transactionPassword -->
+        <div class="row mt-3 form-group">
+            <div class="col-md-6">
+                <label for=""><h5>Transaction Password<span class="text-danger">*</span></h5></label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input name="transactionPassword" #transactionPassword="ngModel" [(ngModel)]="ibRegister.transactionPassword" type="text" 
+                placeholder="Transaction Password" class="form-control" required>
+                <div *ngIf="!transactionPassword?.valid && (transactionPassword?.dirty || transactionPassword?.touched)" class="error">
+                    <div *ngIf="transactionPassword.errors?.required">
+                        <small class="text-danger">Transaction Password required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- confirmTransactionPassword -->
+        <div class="row mt-3 form-group">
+            <div class="col-md-6">
+                <label for=""><h5>Confirm Transaction Password<span class="text-danger">*</span></h5></label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input name="confirmTransactionPassword" #confirmTransactionPassword="ngModel" [(ngModel)]="ibRegister.confirmTransactionPassword" 
+                type="text" placeholder="Confirm Transaction Password" class="form-control" required>
+                <div *ngIf="!confirmTransactionPassword?.valid && (confirmTransactionPassword?.dirty || confirmTransactionPassword?.touched)" class="error">
+                    <div *ngIf="confirmTransactionPassword.errors?.required">
+                        <small class="text-danger">Transaction Password required</small>
+                    </div>
+                    <!-- check if both password are same -->
+                    <!-- <div *ngIf="confirmTransactionPassword.errors?.minlength">
+                        <small class="text-danger">OTP must be 4 digit number</small>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- OTP -->
+        <div class="row mt-3 form-group">
+            <div class="col-md-6">
+                <label for=""><h5>OTP<span class="text-danger">*</span></h5></label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input name="otp" #otp="ngModel" [(ngModel)]="ibRegister.otp" type="number" placeholder="OTP" class="form-control" required min=1000 max=9999>
+                <div *ngIf="!otp?.valid && (otp?.dirty || otp?.touched)" class="error">
+                    <div *ngIf="otp.errors?.required">
+                        <small class="text-danger">OTP required</small>
+                    </div>
+                    <div *ngIf="otp.errors?.min || otp.errors?.max">
+                        <small class="text-danger">OTP must be 4 digit number</small>
+                    </div>
+                </div>
+                <button (click)="getOtp()" class="float-end btn btn-primary mt-3">Get OTP</button>
+            </div>
+        </div>
+    </div>
+        <!-- Submit button -->
+        <div class="text-center mt-5">
+            <button [disabled]="ibRegisterForm.invalid" type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
