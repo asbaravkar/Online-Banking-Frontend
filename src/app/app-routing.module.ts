@@ -1,3 +1,11 @@
+import { UserAccountStatementComponent } from './components/user-account-statement/user-account-statement.component';
+import { SetPasswordComponent } from './components/set-password/set-password.component';
+import { AddBeneficiaryComponent } from './components/add-beneficiary/add-beneficiary.component';
+import { FundTransferComponent } from './components/fund-transfer/fund-transfer.component';
+import { UserAccountDetailsComponent } from './components/user-account-details/user-account-details.component';
+import { UserAccountSummaryComponent } from './components/user-account-summary/user-account-summary.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { ForgotUserIdComponent } from './components/forgot-user-id/forgot-user-id.component';
 import { CustLoginComponent } from './components/cust-login/cust-login.component';
 import { CustRegisterAccountComponent } from './components/cust-register-account/cust-register-account.component';
 import { AccountListComponent } from './components/account-list/account-list.component';
@@ -8,6 +16,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { CustRegisterIbComponent } from './components/cust-register-ib/cust-register-ib.component';
+import { ForgotLoginPasswordComponent } from './components/forgot-login-password/forgot-login-password.component';
+
 
 const routes: Routes = [
   {
@@ -33,7 +43,28 @@ const routes: Routes = [
     path:'register-ib', component:CustRegisterIbComponent
   },
   {
-    path:'login', component:CustLoginComponent
+    path:'login', component:CustLoginComponent,
+    
+  },
+  {
+    path:'forgot-password', component:ForgotLoginPasswordComponent
+  },
+  {
+    path:'forgot-id', component:ForgotUserIdComponent
+  },
+  {
+    path:'dashboard/:id', component:UserDashboardComponent,
+    children:[
+      {path:'', component:UserAccountSummaryComponent},
+      {path:'account-summary', component:UserAccountSummaryComponent},
+      {path:'account-details', component:UserAccountDetailsComponent},
+      {path:'fund-transfer', component:FundTransferComponent},
+      {path:'statement', component:UserAccountStatementComponent},
+      {path:'add-beneficiary', component:AddBeneficiaryComponent}
+    ]
+  },
+  {
+    path:'set-new-password', component:SetPasswordComponent
   }
 ];
 
@@ -44,4 +75,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [HomeComponent, AdminLoginComponent, AdminDashboardComponent, CustDetailsComponent, 
-  CustRegisterAccountComponent, CustRegisterIbComponent, CustLoginComponent]
+  CustRegisterAccountComponent, CustRegisterIbComponent, CustLoginComponent, ForgotLoginPasswordComponent, ForgotUserIdComponent]

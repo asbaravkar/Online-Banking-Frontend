@@ -1,19 +1,19 @@
 <div class="text-center my-3">
     <h2>Customer Login</h2>
 </div>
-<div class="container align-center w-25 mt-4">
+<div class="container align-center w-25 mt-4 border p-3">
     <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm)">
         <!-- Email -->
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" name="customerEmail" #customerEmail="ngModel" [(ngModel)]="custservice.customer.customerEmail" 
-          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter valid email" required email>
-          <div *ngIf="!customerEmail?.valid && (customerEmail?.dirty || customerEmail?.touched)" class="error">
-                <div *ngIf="customerEmail.errors?.required">
-                    <small class="text-danger">Email required</small>
+          <label for="exampleInputEmail1">User ID</label>
+          <input type="number" name="userId" #userId="ngModel" [(ngModel)]="custservice.customer.userId" 
+          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User ID" required email min=6 max=6>
+          <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched)" class="error">
+                <div *ngIf="userId.errors?.required">
+                    <small class="text-danger">User ID</small>
                 </div>
-                <div *ngIf="customerEmail.errors?.email">
-                    <small class="text-danger">Invalid email format</small>
+                <div *ngIf="userId.errors?.min || userId.errors?.max">
+                    <small class="text-danger">User ID must be 6 digit</small>
                 </div>
             </div>
         </div>
@@ -32,12 +32,19 @@
             </div>
         </div>
         </div>
-        <button type="submit" [disabled]="custLoginForm.invalid" class="btn btn-primary mt-3 w-100">Login</button>
+        <div class="row mt-3">
+            <div class="col">
+                <a routerLink="/home" class="btn btn-danger w-100">Back</a>
+            </div>
+            <div class="col">
+                <button type="submit" [disabled]="custLoginForm.invalid" class="btn btn-primary  w-100">Login</button>
+            </div>
+        </div>
     </form>
     <div class="text-center my-4">
         <a href="">Register?</a><br>
-        <a href="">Forgot Password?</a><br>
-        <a href="">Forgot Id?</a>
+        <a routerLink="/forgot-password">Forgot Password?</a><br>
+        <a routerLink="/forgot-id">Forgot Id?</a>
     </div>
 </div>
 

@@ -1,3 +1,4 @@
+import { trackStatus } from './../../shared/models/track-status.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+
+  // object of track status to bind with form
+  track:trackStatus = new trackStatus()
+  
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  // otp to track status by srn
+  getOtp(){
+
+  }
+
+  // check status
+  trackStatus(){
+
   }
 
 }

@@ -1,4 +1,4 @@
 export class CustomerLogin{
-    customerEmail:string
+    userId:string
     customerPassword:string
 }
