@@ -15,9 +15,9 @@ import { UserAccountDetailsComponent } from './components/user-account-details/u
 import { UserAccountSummaryComponent } from './components/user-account-summary/user-account-summary.component';
 import { FundTransferComponent } from './components/fund-transfer/fund-transfer.component';
 import { UserAccountStatementComponent } from './components/user-account-statement/user-account-statement.component';
-import { AddBeneficiaryComponent } from './components/add-beneficiary/add-beneficiary.component';
 import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { UserChangePasswordComponent } from './components/user-change-password/user-change-password.component';
+import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/user-add-beneficiary.component';
 
 
 
@@ -33,9 +33,10 @@ import { UserChangePasswordComponent } from './components/user-change-password/u
     UserAccountSummaryComponent,
     FundTransferComponent,
     UserAccountStatementComponent,
-    AddBeneficiaryComponent,
+    
     SetPasswordComponent,
     UserChangePasswordComponent,
+    UserAddBeneficiaryComponent,
   ],
   imports: [
     BrowserModule,
