@@ -1,3 +1,4 @@
+import { UserChangePasswordComponent } from './components/user-change-password/user-change-password.component';
 import { UserAccountStatementComponent } from './components/user-account-statement/user-account-statement.component';
 import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { AddBeneficiaryComponent } from './components/add-beneficiary/add-beneficiary.component';
@@ -60,7 +61,8 @@ const routes: Routes = [
       {path:'account-details', component:UserAccountDetailsComponent},
       {path:'fund-transfer', component:FundTransferComponent},
       {path:'statement', component:UserAccountStatementComponent},
-      {path:'add-beneficiary', component:AddBeneficiaryComponent}
+      {path:'add-beneficiary', component:AddBeneficiaryComponent},
+      {path:'change-password', component:UserChangePasswordComponent}
     ]
   },
   {
