@@ -13,13 +13,13 @@
             </div>
             <div class="col-md-6 form-group">
                 <input name="accountNumber" #accountNumber="ngModel" [(ngModel)]="ibRegister.accountNumber" type="number" 
-                placeholder="Account Number" class="form-control" required min=1000000000 max=9999999999>
+                placeholder="Account Number" class="form-control" required min=10000000000 max=99999999999>
                 <div *ngIf="!accountNumber?.valid && (accountNumber?.dirty || accountNumber?.touched)" class="error">
                     <div *ngIf="accountNumber.errors?.required">
                         <small class="text-danger">Account Number required</small>
                     </div>
                     <div *ngIf="accountNumber.errors?.min || accountNumber.errors?.max">
-                        <small class="text-danger">Account Number must be 10 digit number</small>
+                        <small class="text-danger">Account Number must be 11 digit number</small>
                     </div>
                 </div>
             </div>
@@ -104,13 +104,13 @@
                 <label for=""><h5>OTP<span class="text-danger">*</span></h5></label>
             </div>
             <div class="col-md-6 form-group">
-                <input name="otp" #otp="ngModel" [(ngModel)]="ibRegister.otp" type="number" placeholder="OTP" class="form-control" required min=1000 max=9999>
+                <input name="otp" #otp="ngModel" [(ngModel)]="ibRegister.otp" type="number" placeholder="OTP" class="form-control" required min=100000 max=999999>
                 <div *ngIf="!otp?.valid && (otp?.dirty || otp?.touched)" class="error">
                     <div *ngIf="otp.errors?.required">
                         <small class="text-danger">OTP required</small>
                     </div>
                     <div *ngIf="otp.errors?.min || otp.errors?.max">
-                        <small class="text-danger">OTP must be 4 digit number</small>
+                        <small class="text-danger">OTP must be 6 digit number</small>
                     </div>
                 </div>
                 <button (click)="getOtp()" class="float-end btn btn-primary mt-3 btn-sm" [disabled]="confirmTransactionPassword.invalid">Get OTP</button>

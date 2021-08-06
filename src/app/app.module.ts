@@ -44,9 +44,9 @@ import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/u
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BackButtonDisableModule.forRoot({
-      preserveScrollPosition: true
-    })
+    // BackButtonDisableModule.forRoot({
+    //   preserveScrollPosition: true
+    // })
   ],
   providers: [UserService, AdminService],
   bootstrap: [AppComponent]

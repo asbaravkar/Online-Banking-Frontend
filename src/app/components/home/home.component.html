@@ -35,13 +35,13 @@
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <input name="srn" type="number" class="form-control" #srn="ngModel" [(ngModel)]="track.srn" required min=1000000000 max=9999999999>
+                      <input name="srn" type="number" class="form-control" #srn="ngModel" [(ngModel)]="track.srn" required min=1000000 max=9999999>
                       <div *ngIf="!srn?.valid && (srn?.dirty || srn?.touched)" class="error">
                         <div *ngIf="srn.errors?.required">
                             <small class="text-danger">SRN required</small>
                         </div>
                         <div *ngIf="srn.errors?.min || srn.errors?.max">
-                            <small class="text-danger">SRN must be 10 digit</small>
+                            <small class="text-danger">SRN must be 7 digit</small>
                         </div>
                     </div>
                     </div>

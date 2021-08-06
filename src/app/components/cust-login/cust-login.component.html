@@ -7,13 +7,13 @@
         <div class="form-group">
           <label for="exampleInputEmail1">User ID</label>
           <input type="number" name="userId" #userId="ngModel" [(ngModel)]="custservice.customer.userId" 
-          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User ID" required email min=6 max=6>
+          class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User ID" required email min=1000000 max=9999999>
           <div *ngIf="!userId?.valid && (userId?.dirty || userId?.touched)" class="error">
                 <div *ngIf="userId.errors?.required">
                     <small class="text-danger">User ID</small>
                 </div>
                 <div *ngIf="userId.errors?.min || userId.errors?.max">
-                    <small class="text-danger">User ID must be 6 digit</small>
+                    <small class="text-danger">User ID must be 7 digit</small>
                 </div>
             </div>
         </div>

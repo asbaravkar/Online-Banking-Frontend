@@ -12,17 +12,18 @@
             </div>
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form3Example3" class="form-control"
-                placeholder="Enter a valid email address" name="adminEmail" #adminEmail="ngModel" [(ngModel)]="service.admin.adminEmail" required email/>
+              <!-- <label class="form-label" for="form3Example3">Enter Admin ID</label> -->
+              <input type="number" id="form3Example3" class="form-control"
+                placeholder="Enter Admin ID" name="adminEmail" #adminEmail="ngModel" [(ngModel)]="service.admin.adminEmail" required min=10000000 max=99999999/>
                 <div *ngIf="!adminEmail?.valid && (adminEmail?.dirty || adminEmail?.touched)" class="error">
                   <div *ngIf="adminEmail.errors?.required">
-                      <small class="text-danger">Email required</small>
+                      <small class="text-danger">ID required</small>
                   </div>
-                  <div *ngIf="adminEmail.errors?.email">
-                      <small class="text-danger">Invalid email format</small>
+                  <div *ngIf="adminEmail.errors?.min || adminEmail.errors?.max">
+                      <small class="text-danger">ID must be 8 digit</small>
                   </div>
               </div>
-              <label class="form-label" for="form3Example3">Email address</label>
+              <!-- <label class="form-label" for="form3Example3">Email address</label> -->
             </div>
             <!-- Password input -->
             <div class="form-outline mb-3">
@@ -36,7 +37,7 @@
                       <small class="text-danger">Minimum 8 characters and atleast one lowercase, uppercase, special, number</small>
                   </div>
               </div>
-              <label class="form-label" for="form3Example4">Password</label>
+              <!-- <label class="form-label" for="form3Example4">Password</label> -->
             </div>
             <!-- Submit button -->
             <div class="row mt-2">

@@ -1,7 +1,7 @@
 import { RegisterInternetBanking } from './../../shared/models/register-internet-banking.model';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { AbstractControl, NgForm } from '@angular/forms';
 
 
 @Component({
@@ -10,6 +10,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./cust-register-ib.component.css']
 })
 export class CustRegisterIbComponent implements OnInit {
+
+  confirmPasswordValidation(control:AbstractControl):{[key: string]:boolean}|null{
+    if(control.parent?.get('password')?.value !== control.value){
+      return {'cpass':true}
+    }
+    return null;
+  }
 
   constructor(public custservice:UserService) { }
 

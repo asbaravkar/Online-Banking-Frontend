@@ -20,13 +20,13 @@
         </div>
         <div class="col">
             <input type="number" class="form-control" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="payee.accountNumber" 
-            required min=1000000000 max=9999999999>
+            required min=10000000000 max=99999999999>
             <div *ngIf="!accountNumber?.valid && (accountNumber?.dirty || accountNumber?.touched)" class="error">
                 <div *ngIf="accountNumber.errors?.required">
                     <small class="text-danger">Account Number required</small>
                 </div>
                 <div *ngIf="accountNumber.errors?.min || accountNumber.errors?.max">
-                    <small class="text-danger">Account Number must be 10 digit</small>
+                    <small class="text-danger">Account Number must be 11 digit</small>
                 </div>
             </div>
         </div>
