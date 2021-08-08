@@ -88,4 +88,14 @@ export class UserService {
   changePassword(lp:string, clp:string, tp:string, ctp:string){
      return this.http.get(`${this.baseUserUrl}/change-password?userid=${this.userId}&lp=${lp}&clp=${clp}&tp=${tp}&ctp=${ctp}`)
   }
+
+  // get otp for register ib
+  getOtpIb(acNo:number){
+    return this.http.get(`${this.baseUserUrl}/register-ib-otp?accnum=${acNo}`)
+  }
+
+  // register
+  registerIb(ac:number, lp:string, clp:string, tp:string, ctp:string){
+    return this.http.get(`${this.baseUserUrl}/register-ib?accnum=${ac}&lp=${lp}&clp=${clp}&tp=${tp}&ctp=${ctp}`)
+  }
 }

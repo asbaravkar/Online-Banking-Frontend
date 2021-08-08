@@ -4,7 +4,7 @@
 
 <!-- form -->
 <div class="container align-center py-3 border w-75">
-    <form #ibRegisterForm="ngForm" (ngSubmit)="registerInternetBanking(ibRegisterForm)">
+    <form #ibRegisterForm="ngForm" (ngSubmit)="ibRegisterForm.form.reset()">
         <div class="text-left">
             <!-- accountNumber -->
         <div class="row mt-5 form-group">
@@ -27,7 +27,7 @@
         <!-- loginPassword -->
         <div class="row mt-3 form-group">
             <div class="col-md-6">
-                <label for=""><h5>Login Password<span class="text-danger">*</span></h5></label>
+                <label for=""><h5>Set Login Password<span class="text-danger">*</span></h5></label>
             </div>
             <div class="col-md-6 form-group">
                 <input type="password" name="loginPassword" #loginPassword="ngModel" [(ngModel)]="ibRegister.loginPassword" placeholder="Login Password" 
@@ -45,7 +45,7 @@
         <!-- confirmLoginPassword -->
         <div class="row mt-3 form-group">
             <div class="col-md-6">
-                <label for=""><h5>Confirm Login Password<span class="text-danger">*</span></h5></label>
+                <label for=""><h5>Set Login Password<span class="text-danger">*</span></h5></label>
             </div>
             <div class="col-md-6 form-group">
                 <input  name="confirmLoginPassword" #confirmLoginPassword="ngModel" [(ngModel)]="ibRegister.confirmLoginPassword" type="text"
@@ -64,7 +64,7 @@
         <!-- transactionPassword -->
         <div class="row mt-3 form-group">
             <div class="col-md-6">
-                <label for=""><h5>Transaction Password<span class="text-danger">*</span></h5></label>
+                <label for=""><h5>Set Transaction Password<span class="text-danger">*</span></h5></label>
             </div>
             <div class="col-md-6 form-group">
                 <input type="password" name="transactionPassword" #transactionPassword="ngModel" [(ngModel)]="ibRegister.transactionPassword" 
@@ -82,7 +82,7 @@
         <!-- confirmTransactionPassword -->
         <div class="row mt-3 form-group">
             <div class="col-md-6">
-                <label for=""><h5>Confirm Transaction Password<span class="text-danger">*</span></h5></label>
+                <label for=""><h5>Set Confirm Transaction Password<span class="text-danger">*</span></h5></label>
             </div>
             <div class="col-md-6 form-group">
                 <input name="confirmTransactionPassword" #confirmTransactionPassword="ngModel" [(ngModel)]="ibRegister.confirmTransactionPassword" 
@@ -113,7 +113,8 @@
                         <small class="text-danger">OTP must be 6 digit number</small>
                     </div>
                 </div>
-                <button (click)="getOtp()" class="float-end btn btn-primary mt-3 btn-sm" [disabled]="confirmTransactionPassword.invalid">Get OTP</button>
+                <button (click)="getOtp(ibRegisterForm.value.accountNumber)" 
+                class="float-end btn btn-primary mt-3 btn-sm" [disabled]="confirmTransactionPassword.invalid">Get OTP</button>
             </div>
         </div>
     </div>
@@ -124,7 +125,8 @@
             </div>
             <div class="col">
                 <div class="">
-                    <button [disabled]="ibRegisterForm.invalid" type="submit" class="btn btn-success">Submit</button>
+                    <button (click)="registerInternetBanking(ibRegisterForm.value.otp, ibRegisterForm.value.loginPassword, ibRegisterForm.value.confirmLoginPassword, ibRegisterForm.value.transactionPassword, ibRegisterForm.value.confirmTransactionPassword, ibRegisterForm.value.accountNumber)" 
+                    [disabled]="ibRegisterForm.invalid" class="btn btn-success">Submit</button>
                 </div>
             </div>
         </div>

@@ -68,6 +68,7 @@ export class CustDetailsComponent implements OnInit {
       console.log(err)
       if(err.error.text == "rejected approval") {
         alert("Rejected")
+        this._location.back()
       } else {
         alert("Not able to reject")
       }

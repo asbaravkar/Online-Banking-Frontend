@@ -2,6 +2,7 @@ import { RegisterInternetBanking } from './../../shared/models/register-internet
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, NgForm } from '@angular/forms';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CustRegisterIbComponent implements OnInit {
     return null;
   }
 
-  constructor(public custservice:UserService) { }
+  constructor(public custservice:UserService, private _location:Location) { }
 
   ngOnInit(): void {
   }
@@ -29,13 +30,48 @@ export class CustRegisterIbComponent implements OnInit {
 
 
   // register form internet banking
-  registerInternetBanking(ibRegisterForm:NgForm){
-
+  registerInternetBanking(otp:number, lp:string, clp:string, tp:string, ctp:string, acNo:number){
+    if(this.otp == otp){
+      this.registerMainIb(acNo, lp, clp, tp, ctp)
+    } else {
+      alert("Invalid OTP")
+    }
   }
 
-
+  otp:number
+  obj:any
   // otp
-  getOtp(){
-    
+  getOtp(acNo:number){
+    this.custservice.getOtpIb(acNo).subscribe(
+      data=>{
+        console.log(data)
+        this.obj = data
+        this.otp = this.obj
+      }, err=>{
+        console.log(err)
+        if(err.error == "invalid accnum")
+        alert("Invalid Account Number")
+      }
+    )
+  }
+
+  registerMainIb(ac:number, lp:string, clp:string, tp:string, ctp:string){
+    this.custservice.registerIb(ac, lp, clp, tp, ctp).subscribe(
+      data=>{
+        console.log(data)
+      }, err=>{
+        console.log(err)
+        if(err.error.text == "set"){
+          alert("Password set successfully")
+          this._location.back()
+        } else if(err.error == "invalid accnum"){
+          alert("Invalid account number")
+        } else if(err.error == "login password didn't matched"){
+          alert("Login password didn't matched")
+        } else if(err.error == "transaction password didn't matched") {
+          alert("Transaction password didn't matched")
+        }
+      }
+    )
   }
 }
