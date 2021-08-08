@@ -1,3 +1,4 @@
+import { UserService } from './../../shared/services/user.service';
 import { trackStatus } from './../../shared/models/track-status.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,19 +14,39 @@ export class HomeComponent implements OnInit {
   track:trackStatus = new trackStatus()
   
 
-  constructor() { }
+  constructor(private serviceUser:UserService) { }
 
   ngOnInit(): void {
   }
 
+  
+  obj:any
   // otp to track status by srn
-  getOtp(){
-
+  getOtp(srn:number){
+    this.serviceUser.trackStatus(srn).subscribe((data)=>{
+      this.obj=data
+      if(this.obj == "Rejected") alert("Rejected. Please apply again")
+      if(this.obj == "invalid srn") {
+        alert("Invalid SRN")
+      } else if(this.obj == "exception"){
+        alert("Exception")
+      } else if(this.obj == "error in sending mail"){
+        alert("Error in sending mail")
+      } else {
+        alert("OTP Send on registered email Id")
+      }
+    })
   }
 
-  // check status
-  trackStatus(){
+  
 
+  // check status
+  trackStatus(otp:number){
+    if(this.obj.otp == otp) {
+      alert(`Status : ${this.obj.status}`)
+    } else {
+      alert("Invalid OTP")
+    }
   }
 
 }

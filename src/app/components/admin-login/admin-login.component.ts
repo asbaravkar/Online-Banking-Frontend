@@ -17,13 +17,27 @@ export class AdminLoginComponent implements OnInit {
   }
 
   adminLogin(loginForm:NgForm){
-    // below code is form demo purpose only
-    if(loginForm.value.adminEmail == "admin@gmail.com" && loginForm.value.adminPassword == "Admin@1399") {
-          alert("Admin login successful")
-          sessionStorage.setItem('adminEmail', loginForm.value.adminEmail)
-          this.router.navigate(['admin-dashboard'])
-        } else {
-          alert("Invalid credentials")
-        }
+    // debugger;
+    this.service.adminLogin(loginForm.value.adminEmail, loginForm.value.adminPassword).subscribe((data)=>{
+      console.log(data);
+      // if(data=="invalid id"){
+      //   alert("Invalid ID")
+      // } else if(data == "invalid password"){
+      //   alert("Invalid password")
+      // } else {
+      //   alert("Successfully Logged in")
+      //   this.router.navigate(["admin-dashboard"])
+      // }
+    }, (err)=> {
+      console.log(err)
+      if(err.error=="invalid id"){
+        alert("Invalid ID")
+      } else if(err.error == "invalid password"){
+        alert("Invalid password")
+      } else {
+        alert("Successfully Logged in")
+        this.router.navigate([`admin-dashboard/${loginForm.value.adminEmail}`])
+      }
+    })
   }
 }

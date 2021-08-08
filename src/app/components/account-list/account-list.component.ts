@@ -1,6 +1,7 @@
 import { RegisterAccount } from './../../shared/models/register-account.model';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/shared/services/admin.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
@@ -11,10 +12,22 @@ export class AccountListComponent implements OnInit {
 
   accountList:RegisterAccount = new RegisterAccount()
 
-  constructor(private adminService:AdminService) { }
+  constructor(private service:AdminService, private route:ActivatedRoute) { }
 
+  adminId:number
   ngOnInit(): void {
-    // use service to fetch list of unapproved accounts list
+    this.adminId = this.route.snapshot.params.id
+    this.service.adminId = this.adminId
+    this.getPendingList(this.adminId)
   }
 
+  pendingList:any
+  getPendingList(adminId:number){
+    this.service.getUnapprovedAccountList(adminId).subscribe((data)=>{
+      this.pendingList = data
+      console.log(data)
+    }, (err)=>{
+      console.log(err)
+    })
+  }
 }

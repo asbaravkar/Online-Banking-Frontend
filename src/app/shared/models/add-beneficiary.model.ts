@@ -1,5 +1,6 @@
 export class Beneficiary {
     name:string
-    accountNumber:number
+    b:number
+    bb:number
     nickname?:string
 }

@@ -3,7 +3,7 @@
 </div>
 
 <div class="container border w-50 p-5 mt-5">
-    <form #forgotIdForm="ngForm" (ngSubmit)="sendMail()">
+    <form #forgotIdForm="ngForm" >
         <div class="row mb-5">
             <div class="col-md-6">
                 <label for=""><h5>Enter Account Number</h5></label>
@@ -35,7 +35,7 @@
                         <small class="text-danger">OTP must be 6 digit</small>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-sm mt-3 float-end" [disabled]="accountNumber.invalid">Get OTP</button>
+                <button (click)="getOtp(forgotIdForm.value.accountNumber)" class="btn btn-primary btn-sm mt-3 float-end" [disabled]="accountNumber.invalid">Get OTP</button>
             </div>
         </div>
         
@@ -45,7 +45,7 @@
                 <a routerLink="/login" class="btn btn-danger float-end">Back</a>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-success" type="submit" [disabled]="forgotIdForm.invalid">Proceed</button>
+                <button (click)="getUserIdByMail(forgotIdForm.value.accountNumber, forgotIdForm.value.otp)" class="btn btn-success" type="submit" [disabled]="forgotIdForm.invalid">Proceed</button>
             </div>
         </div>
     </form>

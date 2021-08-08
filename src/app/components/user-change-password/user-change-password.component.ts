@@ -1,6 +1,7 @@
+import { UserService } from './../../shared/services/user.service';
 import { changePassword } from './../../shared/models/user-change-password.model';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-user-change-password',
@@ -14,15 +15,28 @@ export class UserChangePasswordComponent implements OnInit {
   change:changePassword = new changePassword()
   
 
-  constructor() { }
+  constructor(private serviceUser:UserService) { }
 
   ngOnInit(): void {
   }
 
 
   // change password
-  changePassword(form:NgForm){
-    console.log(form.value)
+  changePassword(lp:string, clp:string, tp:string, ctp:string){
+    this.serviceUser.changePassword(lp, clp, tp, ctp).subscribe(
+      data=>{
+        console.log(data)
+      }, err=>{
+        console.log(err)
+        if(err.error.text == "changed"){
+          alert("Password changed successful")
+        } else if(err.error.text == "login password not matched"){
+          alert("Login password didn't matched")
+        } else if(err.error.text == "transaction password not matched"){
+          alert("Transaction Password didn't matched")
+        }
+      }
+    )
   }
 
 }

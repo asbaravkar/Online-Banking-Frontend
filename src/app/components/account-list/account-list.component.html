@@ -14,11 +14,11 @@
     </thead>
     <tbody>
         <!-- write loop of ngFor 'unapprovedAccountList' and display account details below -->
-        <tr>
-            <td>Customer ID</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td><a class="btn btn-primary" [routerLink]="['details/', 1]">View</a></td>
+        <tr *ngFor="let p of pendingList">
+            <td>{{p.cust_id}}</td>
+            <td>{{p.first_name}}</td>
+            <td>{{p.last_name}}</td>
+            <td><a class="btn btn-primary" [routerLink]="['details/', p.cust_id]">View</a></td>
             <!-- in above td change '1' as userid -->
         </tr>
     </tbody>

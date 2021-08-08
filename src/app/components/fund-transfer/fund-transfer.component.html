@@ -3,7 +3,7 @@
 </div> -->
 
 <div class="container align-center border">
-    <form #fundTransferForm="ngForm" (ngSubmit)="submitTransferForm(fundTransferForm); fundTransferForm.resetForm()">
+    <form #fundTransferForm="ngForm" (ngSubmit)="fundTransferForm.resetForm()">
         <div class="">
             <div class="row mt-5 form-group">
                 <div class="col-md-6">
@@ -12,7 +12,7 @@
                     </label>
                 </div>
                 <div class="dropdown col-md-6">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="Mode" #Mode="ngModel" [(ngModel)]="fund.Mode">
                         <option selected disabled>Mode of Transfer</option>
                         <option value="NEFT">NEFT</option>
                         <option value="RTGS">RTGS</option>
@@ -21,8 +21,23 @@
                 </div>
             </div>
 
-            <!-- From Account -->
+            <!-- List of Beneficiaries -->
             <div class="row mt-5 form-group">
+                <div class="col-md-6">
+                    <label for="">
+                        <h5>Choose Beneficiary<span class="text-danger">*</span></h5>
+                    </label>
+                </div>
+                <div class="dropdown col-md-6">
+                    <select class="form-select" aria-label="Default select example" name="FromAccount" #FromAccount="ngModel" [(ngModel)]="fund.FromAccount">
+                        <option selected disabled>List of Beneficiaries</option>
+                        <option *ngFor="let b of bList" [value]="b.bAccountNumber">{{b.nickname}}</option>
+                      </select>
+                </div>
+            </div>
+
+            <!-- From Account -->
+            <!-- <div class="row mt-5 form-group">
                 <div class="col-md-6">
                     <label for="">
                         <h5>From Account<span class="text-danger">*</span></h5>
@@ -40,9 +55,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- To Account -->
-            <div class="row mt-5 form-group">
+            <!-- <div class="row mt-5 form-group">
                 <div class="col-md-6">
                     <label for="">
                         <h5>To Account<span class="text-danger">*</span></h5>
@@ -60,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--Add New Account Button-->
             <!-- <div class="row mt-3 form-group">
                 <div class="col-md-6">
@@ -92,7 +107,7 @@
                 </div>
             </div>
             <!--Transaction Date-Time-->
-            <div class="row mt-5 form-group">
+            <!-- <div class="row mt-5 form-group">
                 <div class="col-md-6">
                     <label for="">
                         <h5>Transaction Date-Time<span class="text-danger">*</span></h5>
@@ -107,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!--Maturity Instructions-->
             <div class="row mt-5 form-group">
                 <div class="col-md-6">
@@ -144,7 +159,7 @@
                             <button (click)="fundTransferForm.resetForm()" class="float-end btn btn-danger mt-3">Reset</button>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn btn-success mt-3 ml-3">Make Payment</button> 
+                            <button (click)="submitTransferForm(fundTransferForm.value.Amount, fundTransferForm.value.FromAccount, fundTransferForm.value.Mode, fundTransferForm.value.Remark)" class="btn btn-success mt-3 ml-3">Make Payment</button> 
                         </div>
                     </div>
             </div>

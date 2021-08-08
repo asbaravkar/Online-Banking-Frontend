@@ -1,3 +1,5 @@
+import { UserService } from './../../shared/services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { setPassword } from './../../shared/models/set-password.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,15 +15,27 @@ export class SetPasswordComponent implements OnInit {
   set:setPassword = new setPassword()
 
 
-  constructor() { }
+  constructor(private route:ActivatedRoute, private serviceUser:UserService, private router:Router) { }
 
+  userId:number
   ngOnInit(): void {
+    this.userId = this.route.snapshot.params.id
   }
 
 
   // set password
-  setPassword(){
-    
+  setPassword(p1:string, p2:string){
+    this.serviceUser.setNewLoginPassword(this.userId, p1, p2).subscribe((data)=>{
+      console.log(data)
+    }, (err)=>{
+      console.log(err)
+      if(err.error.text == "set"){
+        alert("Password updated")
+        this.router.navigate(['login'])
+      } else {
+        alert("Please try again")
+      }
+    })
   }
 
 }

@@ -10,6 +10,14 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
+  // base url
+  baseUrl:string="http://localhost:16739/api/Admin"
+
+  // admin login
+  adminLogin(userId:number, password:string){
+    return this.http.get(`${this.baseUrl}/login?id=${userId}&password=${password}`)
+  }
+
   // object of AdminModel
   admin:AdminLogin = new AdminLogin()
   
@@ -18,31 +26,25 @@ export class AdminService {
 
 
   // fill after backend api is active
-  baseUrl:string=""
-
-
-   // list of unapprovedRegisterAccount objects
-   unapprovedAccountList:RegisterAccount[] = []
+  
 
 
   // get list of all unapproved and non-rejected accounts
-  getUnapprovedAccountList(){
-    
+  getUnapprovedAccountList(adminId:number){
+    return this.http.get(`${this.baseUrl}/pending-list?adminid=${adminId}`)
   }
-
-
 
 
 
   // accept approval
-  sendApproval(){
-    
+  sendApproval(custId:number){
+    return this.http.post(`${this.baseUrl}/after-approval?custid=${custId}`, null)
   }
 
 
   // reject approval
-  rejectApproval(){
-
+  rejectApproval(custId:number){
+    return this.http.put(`${this.baseUrl}/after-rejection?custid=${custId}`, null)
   }
 
 
@@ -57,4 +59,7 @@ export class AdminService {
     //   return customer
     // });
   }
+
+  // store adminId
+  adminId:number
 }

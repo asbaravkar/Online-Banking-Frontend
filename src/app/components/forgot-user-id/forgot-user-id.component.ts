@@ -1,5 +1,7 @@
+import { UserService } from './../../shared/services/user.service';
 import { forgotUserId } from './../../shared/models/forgot-id.model';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-user-id',
@@ -13,18 +15,38 @@ export class ForgotUserIdComponent implements OnInit {
   forgot:forgotUserId = new forgotUserId()
 
 
-  constructor() { }
+  constructor(private serviceUser:UserService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
-
-  getOtp(){
-
+  obj:any
+  otp:number
+  getOtp(ac:number){
+    this.serviceUser.forgotIdOtp(ac).subscribe((data)=>{
+      if(data == "wrong account number"){
+        alert("wrong account number")
+      } else {
+        alert("OTP sent")
+        this.obj = data
+        this.otp = this.obj.otp
+      }
+    })
   }
 
-  sendMail(){
-    //mail containing user id and redirect back to login
+  getUserIdByMail(ac:number, otp:number){
+    if(this.otp == otp) {
+      this.serviceUser.receiveUserId(ac).subscribe((data)=>{
+        console.log(data)
+        alert("Email sent with UserID")
+      }, (err=>{
+        alert("Email sent with UserID")
+        this.router.navigate(['login'])
+      }))
+    } else {
+      alert("Invalid otp")
+    }
+    
   }
 
 }

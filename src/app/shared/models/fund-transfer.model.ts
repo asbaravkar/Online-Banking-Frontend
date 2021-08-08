@@ -1,4 +1,5 @@
 export class FundTransfer{
+    Mode:string
     FromAccount:number
     ToAccount:number
     Amount:number

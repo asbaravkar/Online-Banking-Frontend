@@ -1,4 +1,4 @@
-<form #addBeneficiaryForm="ngForm" class="p-5 border" (ngSubmit)="addBeneficiary(addBeneficiaryForm)">
+<form #addBeneficiaryForm="ngForm" class="p-5 border" (ngSubmit)="addBeneficiaryForm.form.reset()">
     <!-- name -->
     <div class="row">
         <div class="col">
@@ -19,13 +19,13 @@
             <label for="">Beneficiary Account Number<span class="text-danger">*</span></label>
         </div>
         <div class="col">
-            <input type="number" class="form-control" name="accountNumber" #accountNumber="ngModel" [(ngModel)]="payee.accountNumber" 
+            <input type="number" class="form-control" name="b" #b="ngModel" [(ngModel)]="payee.b" 
             required min=10000000000 max=99999999999>
-            <div *ngIf="!accountNumber?.valid && (accountNumber?.dirty || accountNumber?.touched)" class="error">
-                <div *ngIf="accountNumber.errors?.required">
+            <div *ngIf="!b?.valid && (b?.dirty || b?.touched)" class="error">
+                <div *ngIf="b.errors?.required">
                     <small class="text-danger">Account Number required</small>
                 </div>
-                <div *ngIf="accountNumber.errors?.min || accountNumber.errors?.max">
+                <div *ngIf="b.errors?.min || b.errors?.max">
                     <small class="text-danger">Account Number must be 11 digit</small>
                 </div>
             </div>
@@ -37,12 +37,13 @@
             <label for="">Re-enter Account <span class="text-danger">*</span></label>
         </div>
         <div class="col">
-            <input type="number" class="form-control" required>
-            <!-- <div *ngIf="!accountNumber?.valid && (accountNumber?.dirty || accountNumber?.touched)" class="error">
-                <div *ngIf="accountNumber.errors?.required">
+            <input type="number" class="form-control" required name="bb" #bb="ngModel" [(ngModel)]="payee.bb" 
+            required min=10000000000 max=99999999999>
+            <!-- <div *ngIf="!bb?.valid && (bb?.dirty || bb?.touched)" class="error">
+                <div *ngIf="bb.errors?.required">
                     <small class="text-danger">Account Number required</small>
                 </div>
-                <div *ngIf="accountNumber.errors?.min || accountNumber.errors?.max">
+                <div *ngIf="bb.errors?.min || bb.errors?.max">
                     <small class="text-danger">Account Number must be 10 digit</small>
                 </div>
             </div> -->
@@ -59,6 +60,7 @@
     </div>
     <!-- button -->
     <div class="text-center mt-5">
-        <button type="submit" [disabled]="addBeneficiaryForm.invalid" class="btn btn-primary">Save</button>
+        <button (click)="addBeneficiary(addBeneficiaryForm.value.name, addBeneficiaryForm.value.b, addBeneficiaryForm.value.bb)" 
+        [disabled]="addBeneficiaryForm.invalid" class="btn btn-primary">Save</button>
     </div>
 </form>

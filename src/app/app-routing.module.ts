@@ -32,7 +32,7 @@ const routes: Routes = [
     path:'admin-login', component:AdminLoginComponent
   },
   {
-    path:'admin-dashboard', component:AdminDashboardComponent,
+    path:'admin-dashboard/:id', component:AdminDashboardComponent,
     children:[
       {path:'details/:id', component:CustDetailsComponent},
       {path:'', component:AccountListComponent}
@@ -67,7 +67,7 @@ const routes: Routes = [
     ]
   },
   {
-    path:'set-new-password', component:SetPasswordComponent
+    path:'set-new-password/:id', component:SetPasswordComponent
   }
 ];
 

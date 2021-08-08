@@ -2,7 +2,7 @@
     <h2>Customer Login</h2>
 </div>
 <div class="container align-center w-25 mt-4 border p-3">
-    <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm)">
+    <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm.value.userId, custLoginForm.value.customerPassword)">
         <!-- Email -->
         <div class="form-group">
           <label for="exampleInputEmail1">User ID</label>
@@ -37,7 +37,7 @@
                 <a routerLink="/home" class="btn btn-danger w-100">Back</a>
             </div>
             <div class="col">
-                <button type="submit" [disabled]="custLoginForm.invalid" class="btn btn-primary  w-100">Login</button>
+                <button type="submit" class="btn btn-primary  w-100">Login</button>
             </div>
         </div>
     </form>

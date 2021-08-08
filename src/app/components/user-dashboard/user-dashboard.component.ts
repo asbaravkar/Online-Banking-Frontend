@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:ActivatedRoute) { }
 
+  userId:number
   ngOnInit(): void {
+    this.userId = this.route.snapshot.params.id
+    console.log(this.userId)
   }
 
 }

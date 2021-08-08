@@ -54,22 +54,22 @@
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <input type="number" name="otp" class="form-control" required min=1000 max=9999 #otp="ngModel" [(ngModel)]="track.otp">
+                      <input type="number" name="otp" class="form-control" required min=100000 max=999999 #otp="ngModel" [(ngModel)]="track.otp">
                       <div *ngIf="!otp?.valid && (otp?.dirty || otp?.touched)" class="error">
                         <div *ngIf="otp.errors?.required">
                             <small class="text-danger">OTP is required</small>
                         </div>
                         <div *ngIf="otp.errors?.min || otp.errors?.max">
-                            <small class="text-danger">OTP must be 4 digit</small>
+                            <small class="text-danger">OTP must be 6 digit</small>
                         </div>
                       </div>
-                      <button class="btn btn-primary btn-sm float-end mt-3 btn-sm" [disabled]="srn.invalid">Get OTP</button>
+                      <button (click)="getOtp(trackStatusForm.value.srn)" class="btn btn-primary btn-sm float-end mt-3 btn-sm" [disabled]="srn.invalid">Get OTP</button>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-footer bg-light">
-                <button class="btn btn-primary">Track</button>
+                <button (click)="trackStatus(trackStatusForm.value.otp)" class="btn btn-primary">Track</button>
               </div>
             </form>
           </div> 

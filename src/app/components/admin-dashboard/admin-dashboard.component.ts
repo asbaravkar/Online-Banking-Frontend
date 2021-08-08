@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/shared/services/admin.service';
 
@@ -9,12 +9,14 @@ import { AdminService } from 'src/app/shared/services/admin.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private service:AdminService) { }
 
+ 
   ngOnInit(): void {
 
   }
 
+  
 
   //logout
   adminLogout(){
