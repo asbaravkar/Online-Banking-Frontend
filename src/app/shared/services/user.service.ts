@@ -33,7 +33,7 @@ export class UserService {
 
   // user login
   userLogin(userId:number, password:string){
-    return this.http.get(`${this.baseUserUrl}/login?userid=${userId}&password=${password}`)
+    return this.http.get(`${this.baseUserUrl}/login?userid=${userId}&password=${password}`, {responseType:'text'})
   }
 
   // forgot id otp
@@ -43,7 +43,7 @@ export class UserService {
 
   // receive forgotton userid
   receiveUserId(ac:number){
-    return this.http.get(`${this.baseUserUrl}/receive-userid?accountnumber=${ac}`)
+    return this.http.get(`${this.baseUserUrl}/receive-userid?accountnumber=${ac}`, {responseType:'text'})
     
   }
 
@@ -54,7 +54,7 @@ export class UserService {
 
   // set new password
   setNewLoginPassword(userId:number, p1:string, p2:string){
-    return this.http.put(`${this.baseUserUrl}/set-password?userid=${userId}&p1=${p1}&p2=${p2}`, null)
+    return this.http.put(`${this.baseUserUrl}/set-password?userid=${userId}&p1=${p1}&p2=${p2}`, null, {responseType:'text'})
   }
 
   // get account summary
@@ -72,7 +72,7 @@ export class UserService {
   
   // add beneficiary
   addBeneficiary(name:string, to1:number, to2:number){
-    return this.http.put(`${this.baseUserUrl}/add-beneficiaries?userid=${this.userId}&name=${name}&b1=${to1}&b2=${to2}`, null)
+    return this.http.put(`${this.baseUserUrl}/add-beneficiaries?userid=${this.userId}&name=${name}&b1=${to1}&b2=${to2}`, null, {responseType:'text'})
   }
 
   getTransactionList(){
@@ -96,6 +96,26 @@ export class UserService {
 
   // register
   registerIb(ac:number, lp:string, clp:string, tp:string, ctp:string){
-    return this.http.get(`${this.baseUserUrl}/register-ib?accnum=${ac}&lp=${lp}&clp=${clp}&tp=${tp}&ctp=${ctp}`)
+    return this.http.get(`${this.baseUserUrl}/register-ib?accnum=${ac}&lp=${lp}&clp=${clp}&tp=${tp}&ctp=${ctp}`, {responseType:'text'})
+  }
+
+  // fetch user-details
+  fetchUserDetails(){
+    return this.http.get(`${this.baseUserUrl}/fetch-details?userid=${this.userId}`)
+  }
+
+  // get name for dashboard
+  getName(userId:number){
+    return this.http.get(`${this.baseUserUrl}/get-name?userid=${userId}`, {responseType:'text'})
+  }
+
+  // get info - account statement
+  getInfo(){
+    return this.http.get(`${this.baseUserUrl}/get-info?userid=${this.userId}`, {responseType:'json'})
+  }
+
+  // get tr range
+  getTrRange(ac:number, from:string, to:string){
+    return this.http.get(`${this.baseUserUrl}/get-tr-range?acno=${ac}&from=${from}&to=${to}`)
   }
 }

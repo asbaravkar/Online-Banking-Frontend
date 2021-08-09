@@ -4,7 +4,7 @@
 
 <!-- form -->
 <div class="container align-center py-3 border w-75">
-    <form #ibRegisterForm="ngForm" (ngSubmit)="ibRegisterForm.form.reset()">
+    <form #ibRegisterForm="ngForm">
         <div class="text-left">
             <!-- accountNumber -->
         <div class="row mt-5 form-group">
@@ -45,7 +45,7 @@
         <!-- confirmLoginPassword -->
         <div class="row mt-3 form-group">
             <div class="col-md-6">
-                <label for=""><h5>Set Login Password<span class="text-danger">*</span></h5></label>
+                <label for=""><h5>Confirm Login Password<span class="text-danger">*</span></h5></label>
             </div>
             <div class="col-md-6 form-group">
                 <input  name="confirmLoginPassword" #confirmLoginPassword="ngModel" [(ngModel)]="ibRegister.confirmLoginPassword" type="text"
@@ -82,7 +82,7 @@
         <!-- confirmTransactionPassword -->
         <div class="row mt-3 form-group">
             <div class="col-md-6">
-                <label for=""><h5>Set Confirm Transaction Password<span class="text-danger">*</span></h5></label>
+                <label for=""><h5>Confirm Transaction Password<span class="text-danger">*</span></h5></label>
             </div>
             <div class="col-md-6 form-group">
                 <input name="confirmTransactionPassword" #confirmTransactionPassword="ngModel" [(ngModel)]="ibRegister.confirmTransactionPassword" 

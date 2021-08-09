@@ -27,6 +27,9 @@ export class ForgotLoginPasswordComponent implements OnInit {
   getOtp(userId:number){
     this.serviceUser.forgotPasswordOtp(userId).subscribe((data)=>{
       console.log(data)
+      if(data != -1){
+        alert("OTP sent to registered email id")
+      }
       this.obj = data
       this.otp = this.obj
       if(this.otp == -1) alert("Invalid userID")

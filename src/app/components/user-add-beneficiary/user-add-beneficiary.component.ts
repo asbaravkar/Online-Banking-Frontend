@@ -27,15 +27,22 @@ export class UserAddBeneficiaryComponent implements OnInit {
     // console.log(to2)
     this.serviceUser.addBeneficiary(name, to1, to2).subscribe((data)=>{
       console.log(data)
-    }, (err)=>{
-      console.log(err)
-      if(err.error.text == "added"){
+      if(data == "added"){
         alert("Beneficiary added")
-      } else if(err.error == "already present"){
-        alert("Already present")
+      } else if(data == "already present"){
+        alert("Already present as beneficiary")
       } else {
         alert("Account number didn't matched")
       }
+    }, (err)=>{
+      console.log(err)
+      // if(err.error.text == "added"){
+      //   alert("Beneficiary added")
+      // } else if(err.error == "already present"){
+      //   alert("Already present")
+      // } else {
+      //   alert("Account number didn't matched")
+      // }
     })
   }
 }

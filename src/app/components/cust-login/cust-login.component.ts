@@ -22,22 +22,35 @@ export class CustLoginComponent implements OnInit {
   doCustomerLogin(userId:number, password:string){
     this.custservice.userLogin(userId, password).subscribe((data)=>{
       console.log(data)
-    }, (err)=> {
-      console.log(err)
       if(this.counter <= 1){
-        //send req to lock
         this.lockAccount(userId)
       }
-      if(err.error.text == "login success"){
+      if(data == "login success"){
         this.router.navigate(['dashboard/', userId] )
-      } else if(err.error.text == "wrong password"){
+      } else if(data == "wrong password"){
         this.counter--
         alert(`${this.counter} attempts left`)
-      }else if(err.error.text == "invalid user id") {
-        alert("Invalid user id")
-      } else if(err.error.text =="account locked"){
+      } else if(data == "invalid user id"){
+        alert("Invalid user ID")
+      } else if(data == "account locked"){
         alert("Account locked. Please use forgot password")
       }
+    }, (err)=> {
+      console.log(err)
+      // if(this.counter <= 1){
+      //   //send req to lock
+      //   this.lockAccount(userId)
+      // }
+      // if(err.error.text == "login success"){
+      //   this.router.navigate(['dashboard/', userId] )
+      // } else if(err.error.text == "wrong password"){
+      //   this.counter--
+      //   alert(`${this.counter} attempts left`)
+      // }else if(err.error.text == "invalid user id") {
+      //   alert("Invalid user id")
+      // } else if(err.error.text =="account locked"){
+      //   alert("Account locked. Please use forgot password")
+      // }
     })
   }
 

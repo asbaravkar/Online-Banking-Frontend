@@ -42,36 +42,44 @@ export class CustDetailsComponent implements OnInit {
   sendApproval(){
     this.service.sendApproval(this.custId).subscribe((data)=>{
       console.log(data)
-      // if(data == "process completed"){
-      //   alert("Approved")
-      //   this._location.back()
-      // } else {
-      //   alert("Not Approved")
-      // }
-    }, (err)=>{
-      console.log(err)
-      if(err.error.text == "process completed"){
+      if(data == "process completed"){
         alert("Approved")
         // this.router.navigate[('')]
         this._location.back()
       } else {
-        alert("Not Approved")
+        alert("Something went wrong. Not Approved.")
       }
+    }, (err)=>{
+      console.log(err)
+      // if(err.error.text == "process completed"){
+      //   alert("Approved")
+      //   // this.router.navigate[('')]
+      //   this._location.back()
+      // } else {
+      //   alert("Not Approved")
+      // }
     })
   }
 
   // reject approval
   rejectApproval(){
+    alert("Are you sure ?")
     this.service.rejectApproval(this.custId).subscribe((data)=>{
       console.log(data)
-    }, (err)=>{
-      console.log(err)
-      if(err.error.text == "rejected approval") {
+      if(data == "rejected approval") {
         alert("Rejected")
         this._location.back()
       } else {
-        alert("Not able to reject")
+        alert("Something went wrong. Not rejected.")
       }
+    }, (err)=>{
+      console.log(err)
+      // if(err.error.text == "rejected approval") {
+      //   alert("Rejected")
+      //   this._location.back()
+      // } else {
+      //   alert("Not able to reject")
+      // }
     })
   }
 }

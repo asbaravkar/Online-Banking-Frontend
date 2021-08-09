@@ -59,18 +59,28 @@ export class CustRegisterIbComponent implements OnInit {
     this.custservice.registerIb(ac, lp, clp, tp, ctp).subscribe(
       data=>{
         console.log(data)
-      }, err=>{
-        console.log(err)
-        if(err.error.text == "set"){
+        if(data == "set"){
           alert("Password set successfully")
           this._location.back()
-        } else if(err.error == "invalid accnum"){
+        } else if(data == "invalid accnum"){
           alert("Invalid account number")
-        } else if(err.error == "login password didn't matched"){
+        } else if(data == "login password didn't matched"){
           alert("Login password didn't matched")
-        } else if(err.error == "transaction password didn't matched") {
+        } else if(data == "transaction password didn't matched") {
           alert("Transaction password didn't matched")
         }
+      }, err=>{
+        console.log(err)
+        // if(err.error.text == "set"){
+        //   alert("Password set successfully")
+        //   this._location.back()
+        // } else if(err.error == "invalid accnum"){
+        //   alert("Invalid account number")
+        // } else if(err.error == "login password didn't matched"){
+        //   alert("Login password didn't matched")
+        // } else if(err.error == "transaction password didn't matched") {
+        //   alert("Transaction password didn't matched")
+        // }
       }
     )
   }

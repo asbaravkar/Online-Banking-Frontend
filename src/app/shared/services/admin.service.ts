@@ -15,7 +15,7 @@ export class AdminService {
 
   // admin login
   adminLogin(userId:number, password:string){
-    return this.http.get(`${this.baseUrl}/login?id=${userId}&password=${password}`)
+    return this.http.get(`${this.baseUrl}/login?id=${userId}&password=${password}`, {responseType:'text'})
   }
 
   // object of AdminModel
@@ -38,13 +38,13 @@ export class AdminService {
 
   // accept approval
   sendApproval(custId:number){
-    return this.http.post(`${this.baseUrl}/after-approval?custid=${custId}`, null)
+    return this.http.post(`${this.baseUrl}/after-approval?custid=${custId}`, null, {responseType:'text'})
   }
 
 
   // reject approval
   rejectApproval(custId:number){
-    return this.http.put(`${this.baseUrl}/after-rejection?custid=${custId}`, null)
+    return this.http.put(`${this.baseUrl}/after-rejection?custid=${custId}`, null, {responseType:'text'})
   }
 
 

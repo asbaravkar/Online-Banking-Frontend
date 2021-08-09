@@ -2,7 +2,7 @@
     <h2>Customer Login</h2>
 </div>
 <div class="container align-center w-25 mt-4 border p-3">
-    <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm.value.userId, custLoginForm.value.customerPassword)">
+    <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm.value.userId, custLoginForm.value.customerPassword); custLoginForm.form.reset()">
         <!-- Email -->
         <div class="form-group">
           <label for="exampleInputEmail1">User ID</label>

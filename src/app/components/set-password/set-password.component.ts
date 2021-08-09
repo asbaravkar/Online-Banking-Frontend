@@ -27,14 +27,20 @@ export class SetPasswordComponent implements OnInit {
   setPassword(p1:string, p2:string){
     this.serviceUser.setNewLoginPassword(this.userId, p1, p2).subscribe((data)=>{
       console.log(data)
-    }, (err)=>{
-      console.log(err)
-      if(err.error.text == "set"){
+      if(data == "set"){
         alert("Password updated")
         this.router.navigate(['login'])
       } else {
         alert("Please try again")
       }
+    }, (err)=>{
+      console.log(err)
+      // if(err.error.text == "set"){
+      //   alert("Password updated")
+      //   this.router.navigate(['login'])
+      // } else {
+      //   alert("Please try again")
+      // }
     })
   }
 

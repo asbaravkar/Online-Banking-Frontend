@@ -20,24 +20,24 @@ export class AdminLoginComponent implements OnInit {
     // debugger;
     this.service.adminLogin(loginForm.value.adminEmail, loginForm.value.adminPassword).subscribe((data)=>{
       console.log(data);
-      // if(data=="invalid id"){
-      //   alert("Invalid ID")
-      // } else if(data == "invalid password"){
-      //   alert("Invalid password")
-      // } else {
-      //   alert("Successfully Logged in")
-      //   this.router.navigate(["admin-dashboard"])
-      // }
-    }, (err)=> {
-      console.log(err)
-      if(err.error=="invalid id"){
+      if(data=="invalid id"){
         alert("Invalid ID")
-      } else if(err.error == "invalid password"){
+      } else if(data == "invalid password"){
         alert("Invalid password")
       } else {
         alert("Successfully Logged in")
         this.router.navigate([`admin-dashboard/${loginForm.value.adminEmail}`])
       }
+    }, (err)=> {
+      console.log(err)
+      // if(err.error=="invalid id"){
+      //   alert("Invalid ID")
+      // } else if(err.error == "invalid password"){
+      //   alert("Invalid password")
+      // } else {
+      //   alert("Successfully Logged in")
+      //   this.router.navigate([`admin-dashboard/${loginForm.value.adminEmail}`])
+      // }
     })
   }
 }

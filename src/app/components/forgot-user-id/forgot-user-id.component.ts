@@ -27,7 +27,7 @@ export class ForgotUserIdComponent implements OnInit {
       if(data == "wrong account number"){
         alert("wrong account number")
       } else {
-        alert("OTP sent")
+        alert("OTP sent to registered email id")
         this.obj = data
         this.otp = this.obj.otp
       }
@@ -39,9 +39,16 @@ export class ForgotUserIdComponent implements OnInit {
       this.serviceUser.receiveUserId(ac).subscribe((data)=>{
         console.log(data)
         alert("Email sent with UserID")
+        if(data == "userid recoverd"){
+          alert("Please login")
+          this.router.navigate(['login'])
+        } else {
+          alert("Something went wrong")
+          this.router.navigate(['login'])
+        }
       }, (err=>{
-        alert("Email sent with UserID")
-        this.router.navigate(['login'])
+        // alert("Email sent with UserID")
+        // this.router.navigate(['login'])
       }))
     } else {
       alert("Invalid otp")
