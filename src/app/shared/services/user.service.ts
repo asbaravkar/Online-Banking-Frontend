@@ -81,7 +81,7 @@ export class UserService {
 
   // fund-transfer
   fundTransfer(amount:number, to:number, mode:string, remark?:string){
-    return this.http.post(`${this.baseUserUrl}/transaction?userid=${this.userId}&amount=${amount}&to=${to}&mode=${mode}&remark=${remark}`, null)
+    return this.http.post(`${this.baseUserUrl}/transaction?userid=${this.userId}&amount=${amount}&to=${to}&mode=${mode}&remark=${remark}`, null, {responseType:'text'})
   }
 
   // change password in dashboard
@@ -117,5 +117,15 @@ export class UserService {
   // get tr range
   getTrRange(ac:number, from:string, to:string){
     return this.http.get(`${this.baseUserUrl}/get-tr-range?acno=${ac}&from=${from}&to=${to}`)
+  }
+
+  // get customer address for account details
+  getAddress(){
+    return this.http.get(`${this.baseUserUrl}/fetch-address?userid=${this.userId}`, {responseType:'json'})
+  }
+
+  updateBasicDetails(custId:number,title:string, fname:string, lname:string, mname:string, faname:string, mnum:number, email:string,
+    aadhar:number, pan:string, occtype:string, incsource:string, gai:string){
+      return this.http.put(`${this.baseUserUrl}/update-basic?id=${custId}&title=${title}&fname=${fname}&lname=${lname}&mname=${mname}&faname=${faname}&mnum=${mnum}&email=${email}&aadhar=${aadhar}&pan=${pan}&occtype=${occtype}&incsource=${incsource}&gai=${gai}`, null, {responseType:'text'})
   }
 }

@@ -33,14 +33,19 @@ export class FundTransferComponent implements OnInit {
     this.serviceUser.fundTransfer(amount, from, mode, remarks).subscribe(
       data=>{
         console.log(data)
+        if(data == "done"){
+          alert("Transferred successfully")
+        } else if(data == "insufficient funds"){
+          alert("Insufficient funds")
+        }
       },
       err=>{
         console.log(err)
-        if(err.error.text == "done"){
-          alert("Transferred successfully")
-        } else if(err.error.text == "insufficient funds"){
-          alert("Insufficient funds")
-        }  
+        // if(err.error.text == "done"){
+        //   alert("Transferred successfully")
+        // } else if(err.error.text == "insufficient funds"){
+        //   alert("Insufficient funds")
+        // }  
       }
     )
   } 
