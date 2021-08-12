@@ -1,3 +1,4 @@
+import { RegistrationComponent } from './components/registration/registration.component';
 import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/user-add-beneficiary.component';
 import { UserChangePasswordComponent } from './components/user-change-password/user-change-password.component';
 import { UserAccountStatementComponent } from './components/user-account-statement/user-account-statement.component';
@@ -39,7 +40,7 @@ const routes: Routes = [
     ]
   },
   {
-    path:'register-account', component:CustRegisterAccountComponent
+    path:'register-account', component:RegistrationComponent
   },
   {
     path:'register-ib', component:CustRegisterIbComponent

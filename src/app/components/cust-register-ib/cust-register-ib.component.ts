@@ -60,7 +60,7 @@ export class CustRegisterIbComponent implements OnInit {
       data=>{
         console.log(data)
         if(data == "set"){
-          alert("Password set successfully")
+          alert("Password set successfully. You can login into your account.")
           this._location.back()
         } else if(data == "invalid accnum"){
           alert("Invalid account number")

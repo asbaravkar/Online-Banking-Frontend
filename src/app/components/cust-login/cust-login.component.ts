@@ -16,16 +16,17 @@ export class CustLoginComponent implements OnInit {
 
   }
 
-  counter=2
+  counter=3
 
   // login function
   doCustomerLogin(userId:number, password:string){
     this.custservice.userLogin(userId, password).subscribe((data)=>{
       console.log(data)
-      if(this.counter <= 1){
+      if(this.counter < 1){
         this.lockAccount(userId)
       }
       if(data == "login success"){
+        alert("Sucessfully logged in")
         this.router.navigate(['dashboard/', userId] )
       } else if(data == "wrong password"){
         this.counter--

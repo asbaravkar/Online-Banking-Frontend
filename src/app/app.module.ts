@@ -18,6 +18,7 @@ import { UserAccountStatementComponent } from './components/user-account-stateme
 import { SetPasswordComponent } from './components/set-password/set-password.component';
 import { UserChangePasswordComponent } from './components/user-change-password/user-change-password.component';
 import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/user-add-beneficiary.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 
 
@@ -37,6 +38,7 @@ import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/u
     SetPasswordComponent,
     UserChangePasswordComponent,
     UserAddBeneficiaryComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

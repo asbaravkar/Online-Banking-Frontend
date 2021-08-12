@@ -128,4 +128,21 @@ export class UserService {
     aadhar:number, pan:string, occtype:string, incsource:string, gai:string){
       return this.http.put(`${this.baseUserUrl}/update-basic?id=${custId}&title=${title}&fname=${fname}&lname=${lname}&mname=${mname}&faname=${faname}&mnum=${mnum}&email=${email}&aadhar=${aadhar}&pan=${pan}&occtype=${occtype}&incsource=${incsource}&gai=${gai}`, null, {responseType:'text'})
   }
+
+  // user registration
+  userRegistration(obj:any){
+    return this.http.post("http://localhost:16739/api/Registration/register", obj, {responseType:'text'})
+  }
+
+
+  // only change user dashboard login password
+  changeLoginPassword(pass:string, confirmPass:string){
+    return this.http.post(`${this.baseUserUrl}/only-login-password?userid=${this.userId}&pass1=${pass}&pass2=${confirmPass}`, null, {responseType:'text'})
+  }
+
+
+  // only change user dashboard transaction password
+  changeTransactionPassword(pass:string, confirmPass:string){
+    return this.http.post(`${this.baseUserUrl}/only-transaction-password?userid=${this.userId}&pass1=${pass}&pass2=${confirmPass}`, null, {responseType:'text'})
+  }
 }

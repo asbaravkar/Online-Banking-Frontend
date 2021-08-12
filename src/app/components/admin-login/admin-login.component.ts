@@ -26,6 +26,7 @@ export class AdminLoginComponent implements OnInit {
         alert("Invalid password")
       } else {
         alert("Successfully Logged in")
+        
         this.router.navigate([`admin-dashboard/${loginForm.value.adminEmail}`])
       }
     }, (err)=> {

@@ -9,11 +9,11 @@ import { AdminService } from 'src/app/shared/services/admin.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor(private router:Router, private service:AdminService) { }
+  constructor(private router:Router, private service:AdminService, private route:ActivatedRoute) { }
 
- 
+ adminId:number
   ngOnInit(): void {
-
+    this.adminId = this.route.snapshot.params.id
   }
 
   

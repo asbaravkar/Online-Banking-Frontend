@@ -11,19 +11,23 @@
     <table class="table mt-5 border">
         <thead class="text-center">
             <tr>
-                <th>To Account Number</th>
-                <th>Amount Transfered</th>
+                <th>To/From Account Number</th>
+                <th>Credited</th>
+                <th>Debited</th>
                 <th>Date(DD/MM/YY)</th>
                 <th>Remarks</th>
             </tr>
         </thead>
         <tbody class="text-center">
-            <tr *ngFor="let t of trList">
+            <ng-container *ngFor="let t of trList">
+            <tr>
                 <td>{{t.paidToAccNum}}</td>
-                <td>{{t.amount}}</td>
-                <td>{{t.transTime}}</td>
+                <td class="text-success">{{t.amount > 0 ? t.amount : ''}}</td>
+                <td class="text-danger">{{t.amount < 0 ? -t.amount : ''}}</td>
+                <td>{{t.transTime.slice(0,10)}}</td>
                 <td>{{t.remark}}</td>
             </tr>
+            </ng-container>
         </tbody>
     </table>
 </div>
