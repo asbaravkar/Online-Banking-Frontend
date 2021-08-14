@@ -1,7 +1,7 @@
 import { RegisterInternetBanking } from './../../shared/models/register-internet-banking.model';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, NgForm } from '@angular/forms';
+import { AbstractControl} from '@angular/forms';
 import {Location} from '@angular/common';
 
 
@@ -44,6 +44,7 @@ export class CustRegisterIbComponent implements OnInit {
   getOtp(acNo:number){
     this.custservice.getOtpIb(acNo).subscribe(
       data=>{
+        alert("OTP sent on registered email")
         console.log(data)
         this.obj = data
         this.otp = this.obj
@@ -71,16 +72,7 @@ export class CustRegisterIbComponent implements OnInit {
         }
       }, err=>{
         console.log(err)
-        // if(err.error.text == "set"){
-        //   alert("Password set successfully")
-        //   this._location.back()
-        // } else if(err.error == "invalid accnum"){
-        //   alert("Invalid account number")
-        // } else if(err.error == "login password didn't matched"){
-        //   alert("Login password didn't matched")
-        // } else if(err.error == "transaction password didn't matched") {
-        //   alert("Transaction password didn't matched")
-        // }
+      
       }
     )
   }

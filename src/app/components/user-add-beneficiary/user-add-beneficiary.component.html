@@ -39,14 +39,7 @@
         <div class="col">
             <input type="number" class="form-control" required name="bb" #bb="ngModel" [(ngModel)]="payee.bb" 
             required min=10000000000 max=99999999999>
-            <!-- <div *ngIf="!bb?.valid && (bb?.dirty || bb?.touched)" class="error">
-                <div *ngIf="bb.errors?.required">
-                    <small class="text-danger">Account Number required</small>
-                </div>
-                <div *ngIf="bb.errors?.min || bb.errors?.max">
-                    <small class="text-danger">Account Number must be 10 digit</small>
-                </div>
-            </div> -->
+            
         </div>
     </div>
     <!-- nickname -->

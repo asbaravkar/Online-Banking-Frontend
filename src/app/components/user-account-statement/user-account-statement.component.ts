@@ -45,4 +45,8 @@ export class UserAccountStatementComponent implements OnInit {
     )
   }
 
+  getReceipt(refNumber:number){
+    
+  }
+
 }

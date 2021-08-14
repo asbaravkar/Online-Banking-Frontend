@@ -20,14 +20,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { CustRegisterIbComponent } from './components/cust-register-ib/cust-register-ib.component';
 import { ForgotLoginPasswordComponent } from './components/forgot-login-password/forgot-login-password.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
   {
     path:'home', component:HomeComponent
   },
+  
   {
-    path:'', redirectTo:'/home', pathMatch:'full'
+    path:'', redirectTo:'home', pathMatch:'full'
   },
   {
     path:'admin-login', component:AdminLoginComponent
@@ -69,6 +71,9 @@ const routes: Routes = [
   },
   {
     path:'set-new-password/:id', component:SetPasswordComponent
+  },
+  {
+    path:'**', component:PageNotFoundComponent
   }
 ];
 

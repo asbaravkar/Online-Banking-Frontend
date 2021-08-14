@@ -14,6 +14,9 @@ export class AdminDashboardComponent implements OnInit {
  adminId:number
   ngOnInit(): void {
     this.adminId = this.route.snapshot.params.id
+    if(sessionStorage.getItem('admin')! !=this.adminId.toString()){
+      this.router.navigate(["admin-login"])
+    }
   }
 
   
@@ -21,6 +24,7 @@ export class AdminDashboardComponent implements OnInit {
   //logout
   adminLogout(){
     alert("Successfully logged out")
+    sessionStorage.removeItem('admin')
     this.router.navigate(['admin-login'])
   }
 

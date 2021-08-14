@@ -1,5 +1,5 @@
 import { UserService } from './../../shared/services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,13 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private serviceUser:UserService) { }
+  constructor(private route:ActivatedRoute, private serviceUser:UserService, private router:Router) { }
 
+  lastTime:string
   userId:number
   ngOnInit(): void {
     this.userId = this.route.snapshot.params.id
     this.getName(this.userId)
     console.log(this.userId)
+    if(sessionStorage.getItem('user')! !=this.userId.toString()){
+      this.router.navigate(["login"])
+    }
+    this.lastTime = localStorage.getItem('lastlogin')!
   }
 
   nameOnDashboard:string
@@ -30,5 +35,13 @@ export class UserDashboardComponent implements OnInit {
         this.nameOnDashboard=this.obj
       }
     )
+  }
+
+  logoutTime = new Date()
+  // logout
+  logout(){
+    sessionStorage.removeItem('user')
+    this.router.navigate(['/'])
+    localStorage.setItem('lastlogin', this.logoutTime.toString())
   }
 }

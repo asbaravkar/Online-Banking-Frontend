@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-cust-login',
@@ -12,8 +12,12 @@ export class CustLoginComponent implements OnInit {
 
   constructor(public custservice:UserService, private router:Router) { }
 
+  userSession:string
   ngOnInit(): void {
-
+    this.userSession = localStorage.getItem('user')!
+    if(this.userSession !='abc'){
+      this.router.navigate(['login'])
+    }
   }
 
   counter=3
@@ -27,6 +31,7 @@ export class CustLoginComponent implements OnInit {
       }
       if(data == "login success"){
         alert("Sucessfully logged in")
+        sessionStorage.setItem('user', userId.toString())
         this.router.navigate(['dashboard/', userId] )
       } else if(data == "wrong password"){
         this.counter--
@@ -38,20 +43,7 @@ export class CustLoginComponent implements OnInit {
       }
     }, (err)=> {
       console.log(err)
-      // if(this.counter <= 1){
-      //   //send req to lock
-      //   this.lockAccount(userId)
-      // }
-      // if(err.error.text == "login success"){
-      //   this.router.navigate(['dashboard/', userId] )
-      // } else if(err.error.text == "wrong password"){
-      //   this.counter--
-      //   alert(`${this.counter} attempts left`)
-      // }else if(err.error.text == "invalid user id") {
-      //   alert("Invalid user id")
-      // } else if(err.error.text =="account locked"){
-      //   alert("Account locked. Please use forgot password")
-      // }
+      
     })
   }
 

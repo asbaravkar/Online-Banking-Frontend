@@ -31,6 +31,9 @@ export class CustDetailsComponent implements OnInit {
   getAccount(){
     this.serviceUser.getUserDetails(this.custId).subscribe((data)=>{
       console.log(data)
+      if(data == "something went wrong"){
+        alert("something went wrong")
+      }
       this.custDetails = data
     }, (err)=>{
       console.log(err)
@@ -44,20 +47,15 @@ export class CustDetailsComponent implements OnInit {
       console.log(data)
       if(data == "process completed"){
         alert("Approved")
-        // this.router.navigate[('')]
         this._location.back()
+      } else if(data == "something went wrong"){
+        alert("something went wrong")
       } else {
         alert("Something went wrong. Not Approved.")
       }
     }, (err)=>{
       console.log(err)
-      // if(err.error.text == "process completed"){
-      //   alert("Approved")
-      //   // this.router.navigate[('')]
-      //   this._location.back()
-      // } else {
-      //   alert("Not Approved")
-      // }
+      
     })
   }
 
@@ -69,17 +67,14 @@ export class CustDetailsComponent implements OnInit {
       if(data == "rejected approval") {
         alert("Rejected")
         this._location.back()
+      } else if(data == "something went wrong"){
+        alert("something went wrong")
       } else {
         alert("Something went wrong. Not rejected.")
       }
     }, (err)=>{
       console.log(err)
-      // if(err.error.text == "rejected approval") {
-      //   alert("Rejected")
-      //   this._location.back()
-      // } else {
-      //   alert("Not able to reject")
-      // }
+      
     })
   }
 }

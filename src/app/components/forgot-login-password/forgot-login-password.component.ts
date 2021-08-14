@@ -33,6 +33,9 @@ export class ForgotLoginPasswordComponent implements OnInit {
       this.obj = data
       this.otp = this.obj
       if(this.otp == -1) alert("Invalid userID")
+      else if(data == "something went wrong"){
+        alert("something went wrong")
+      }
     }, (err)=>{
       console.log(err)
     })
@@ -41,6 +44,7 @@ export class ForgotLoginPasswordComponent implements OnInit {
 
   goToSetNewPassword(otp:number, userId:number){
     if(this.otp == otp){
+      sessionStorage.setItem('setPassword',userId.toString())
       this.router.navigate(['set-new-password/', userId])
     } else {
       alert("Invalid OTP")

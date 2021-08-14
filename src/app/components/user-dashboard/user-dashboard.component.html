@@ -26,10 +26,11 @@
                     <!-- <li><a routerLink="fund-transfer" class="nav-link text-white">Fund Transfer</a></li> -->
                     <li><a routerLink="account-details" class="nav-link text-white">Update details</a></li>
                     <li><a routerLink="change-password" class="nav-link text-white">Change Password</a></li>
-                    <li><a routerLink="/" class="nav-link text-white">Logout</a></li>
+                    <li><a (click)="logout()" class="nav-link text-white">Logout</a></li>
                 </ul>
             </div>
         </nav>
+        <h5 class="text-danger">Last Login : {{ lastTime | date:'medium'}}</h5>
           <!-- router outlet of child components -->
             <router-outlet></router-outlet>
     </div>

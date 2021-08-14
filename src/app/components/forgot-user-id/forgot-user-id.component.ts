@@ -47,8 +47,7 @@ export class ForgotUserIdComponent implements OnInit {
           this.router.navigate(['login'])
         }
       }, (err=>{
-        // alert("Email sent with UserID")
-        // this.router.navigate(['login'])
+        
       }))
     } else {
       alert("Invalid otp")

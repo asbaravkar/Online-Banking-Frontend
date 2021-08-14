@@ -23,13 +23,11 @@ export class FundTransferComponent implements OnInit {
     this.getTrList()
   }
 
+  fromAccNum:number
 
   // submit transfer form
   submitTransferForm(amount:number, from:number, mode:string, remarks:string){
-    // console.log(amount)
-    // console.log(from)
-    // console.log(mode)
-    // console.log(remarks)
+    this.fromAccNum=amount
     this.serviceUser.fundTransfer(amount, from, mode, remarks).subscribe(
       data=>{
         console.log(data)
@@ -41,11 +39,7 @@ export class FundTransferComponent implements OnInit {
       },
       err=>{
         console.log(err)
-        // if(err.error.text == "done"){
-        //   alert("Transferred successfully")
-        // } else if(err.error.text == "insufficient funds"){
-        //   alert("Insufficient funds")
-        // }  
+         
       }
     )
   } 
@@ -65,4 +59,17 @@ export class FundTransferComponent implements OnInit {
       console.log(err)
     })
   }
+
+  receipt:any
+  // fetch transaction for receipt
+  transactionReceipt(){
+    
+      this.serviceUser.transactionReceipt().subscribe(
+        data=>{
+          console.log(data)
+          this.receipt=data
+        }
+      )
+    }
+  
 }

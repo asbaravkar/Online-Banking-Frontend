@@ -145,4 +145,10 @@ export class UserService {
   changeTransactionPassword(pass:string, confirmPass:string){
     return this.http.post(`${this.baseUserUrl}/only-transaction-password?userid=${this.userId}&pass1=${pass}&pass2=${confirmPass}`, null, {responseType:'text'})
   }
+
+  // tr receipt
+  transactionReceipt(){
+    console.log(this.userId)
+    return this.http.get(`${this.baseUserUrl}/tr-receipt?userid=${this.userId}`, {responseType:'json'})
+  }
 }

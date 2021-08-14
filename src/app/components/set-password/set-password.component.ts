@@ -20,6 +20,10 @@ export class SetPasswordComponent implements OnInit {
   userId:number
   ngOnInit(): void {
     this.userId = this.route.snapshot.params.id
+    let value = sessionStorage.getItem('setPassword')
+    if(Number(value) != this.userId){
+      this.router.navigate(['home'])
+    }
   }
 
 
@@ -35,12 +39,7 @@ export class SetPasswordComponent implements OnInit {
       }
     }, (err)=>{
       console.log(err)
-      // if(err.error.text == "set"){
-      //   alert("Password updated")
-      //   this.router.navigate(['login'])
-      // } else {
-      //   alert("Please try again")
-      // }
+      
     })
   }
 

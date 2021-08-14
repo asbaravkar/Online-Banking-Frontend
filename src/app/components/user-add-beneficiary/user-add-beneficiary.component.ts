@@ -17,14 +17,12 @@ export class UserAddBeneficiaryComponent implements OnInit {
   constructor(private route:ActivatedRoute, private serviceUser:UserService, private router:Router) { }
 
   ngOnInit(): void {
-    // console.log(this.route.snapshot.params.id)
+    
   }
 
 
   addBeneficiary(name:string, to1:number, to2:number){
-    // debugger
-    // console.log(to1)
-    // console.log(to2)
+    
     this.serviceUser.addBeneficiary(name, to1, to2).subscribe((data)=>{
       console.log(data)
       if(data == "added"){
@@ -36,13 +34,7 @@ export class UserAddBeneficiaryComponent implements OnInit {
       }
     }, (err)=>{
       console.log(err)
-      // if(err.error.text == "added"){
-      //   alert("Beneficiary added")
-      // } else if(err.error == "already present"){
-      //   alert("Already present")
-      // } else {
-      //   alert("Account number didn't matched")
-      // }
+      
     })
   }
 }

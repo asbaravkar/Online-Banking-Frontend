@@ -136,7 +136,8 @@
                 </div>
             </div>
 
-            <div id="pan_doc" class="form-group mt-4">
+            <!-- ------------------------------------------ -->
+            <!-- <div id="pan_doc" class="form-group mt-4">
                 <label>Pan Card Document: </label>&nbsp;
                 <input type="file" name="pan_doc" formControlName="pan_doc" placeholder="Enter Pan Card Document">
                 <div class="alert alert-danger"
@@ -144,13 +145,10 @@
                     <small *ngIf="Registration.get('pan_doc')?.errors?.required">
                         Pan Card Document is required
                     </small>
-                    <!--
-                    <small *ngIf="email.errors.email">
-                        Invalid Email
-                    </small>
-                    -->
+                    
                 </div>
-            </div>
+            </div> -->
+            <!-- ------------------------------------------ -->
     
             <div id="dob" class="form-group mt-4">
                 <label>Date Of Birth</label>
@@ -232,7 +230,7 @@
                 </div>
                 <div id="pin_code" class="form-group mt-4">
                     <label>Pin Code</label>
-                    <input type="text" class="form-control" name="pin_code" formControlName="pin_code"
+                    <input type="number" class="form-control" name="pin_code" formControlName="pin_code"
                         placeholder="Enter Pin Code">
                     <div class="alert alert-danger"
                         *ngIf="Registration.get('pin_code')?.errors && Registration.get('pin_code')?.touched">
@@ -378,8 +376,8 @@
             </div>
     
             <div id="gross_annual_income" class="form-group mt-4">
-                <label>Gross Annual Income</label>
-                <input type="text" class="form-control" name="gross_annual_income" formControlName="gross_annual_income"
+                <label>Gross Annual Income (LPA)</label>
+                <input type="number" class="form-control" name="gross_annual_income" formControlName="gross_annual_income"
                     placeholder="Enter Gross Annual Income">
                 <div class="alert alert-danger"
                     *ngIf="Registration.get('gross_annual_income')?.errors && Registration.get('gross_annual_income')?.touched">

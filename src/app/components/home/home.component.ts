@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
       if(this.obj == "Rejected") alert("Rejected. Please apply again")
       if(this.obj == "invalid srn") {
         alert("Invalid SRN")
-      } else if(this.obj == "exception"){
-        alert("Exception")
+      } else if(this.obj == "something went wrong"){
+        alert("something went wrong")
       } else if(this.obj == "error in sending mail"){
         alert("Error in sending mail")
       } else {

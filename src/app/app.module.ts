@@ -19,6 +19,7 @@ import { SetPasswordComponent } from './components/set-password/set-password.com
 import { UserChangePasswordComponent } from './components/user-change-password/user-change-password.component';
 import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/user-add-beneficiary.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 
@@ -39,6 +40,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     UserChangePasswordComponent,
     UserAddBeneficiaryComponent,
     RegistrationComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

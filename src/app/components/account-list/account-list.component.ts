@@ -26,6 +26,9 @@ export class AccountListComponent implements OnInit {
     this.service.getUnapprovedAccountList(adminId).subscribe((data)=>{
       this.pendingList = data
       console.log(data)
+      if(data == "something went wrong"){
+        alert("something went wrong")
+      }
     }, (err)=>{
       console.log(err)
     })
