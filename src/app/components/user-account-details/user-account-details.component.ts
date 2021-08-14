@@ -2,6 +2,7 @@ import { AccountDetails } from './../../shared/models/account-details.model';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Address } from 'src/app/shared/models/address.model';
 
 @Component({
   selector: 'app-user-account-details',
@@ -18,6 +19,12 @@ export class UserAccountDetailsComponent implements OnInit {
     console.log(this.details)
   }
 
+  // update address
+  updateAddress(line1:string, line2:string, landmark:string, city:string, state:string, pincode:number){
+
+  }
+
+  
   // submit
   submitUpdate(title:string, fname:string, lname:string, faname:string, mname:string,
     mnum:number, email:string, aadhar:number, pan:string, occtype:string, incsource:string,
@@ -26,6 +33,8 @@ export class UserAccountDetailsComponent implements OnInit {
       data=>{
         if(data == "updated"){
           alert("Details updated")
+        } else if(data == "Exception"){
+          alert("Some fields must be unique. Current field not updated")
         } else {
           alert("Customer not found")
         }
@@ -50,13 +59,23 @@ export class UserAccountDetailsComponent implements OnInit {
     )
   }
 
-
+  tmp:any
+  address:Address = new Address()
   // fetch address
   fetchAddress(){
     this.serviceUser.getAddress().subscribe(
       data=>{
         console.log(data)
+        this.tmp = data
+        if(this.tmp.length == 1){
+          this.address = this.tmp[0]
+        } else {
+          this.address = this.tmp[1]
+        }
       }
     )
   }
+
+
+  
 }

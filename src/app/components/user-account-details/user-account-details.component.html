@@ -3,15 +3,30 @@
     <div class="row">
         <div class="col">
             <label for="">Title</label>
-            <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="details.title">
+            <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="details.title" required>
+            <div *ngIf="!title?.valid && (title?.dirty || title?.touched)" class="error">
+                <div *ngIf="title.errors?.required">
+                    <small class="text-danger">Title required</small>
+                </div>
+            </div>
         </div>
         <div class="col">
             <label for="">First Name</label>
-            <input type="text" class="form-control" name="first_name" #first_name="ngModel" [(ngModel)]="details.first_name">
+            <input type="text" class="form-control" name="first_name" #first_name="ngModel" [(ngModel)]="details.first_name" required>
+            <div *ngIf="!first_name?.valid && (first_name?.dirty || first_name?.touched)" class="error">
+                <div *ngIf="first_name.errors?.required">
+                    <small class="text-danger">First Name required</small>
+                </div>
+            </div>
         </div>
         <div class="col">
             <label for="">Last Name</label>
-            <input type="text" class="form-control" name="last_name" #last_name="ngModel" [(ngModel)]="details.last_name">
+            <input type="text" class="form-control" name="last_name" #last_name="ngModel" [(ngModel)]="details.last_name" required>
+            <div *ngIf="!last_name?.valid && (last_name?.dirty || last_name?.touched)" class="error">
+                <div *ngIf="last_name.errors?.required">
+                    <small class="text-danger">Last Name required</small>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -19,32 +34,74 @@
         
         <div class="col">
             <label for="">Middle Name</label>
-            <input type="text" class="form-control" name="middle_name" #middle_name="ngModel" [(ngModel)]="details.middle_name">
+            <input type="text" class="form-control" name="middle_name" #middle_name="ngModel" [(ngModel)]="details.middle_name" required>
+            <div *ngIf="!middle_name?.valid && (middle_name?.dirty || middle_name?.touched)" class="error">
+                <div *ngIf="middle_name.errors?.required">
+                    <small class="text-danger">Middle Name required</small>
+                </div>
+            </div>
         </div>
         <div class="col">
             <label for="">Father Name</label>
-            <input type="text" class="form-control" name="father_name" #father_name="ngModel" [(ngModel)]="details.father_name">
+            <input type="text" class="form-control" name="father_name" #father_name="ngModel" [(ngModel)]="details.father_name" required>
+            <div *ngIf="!father_name?.valid && (father_name?.dirty || father_name?.touched)" class="error">
+                <div *ngIf="father_name.errors?.required">
+                    <small class="text-danger">Father Name required</small>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
     <div class="row mt-4">
         <div class="col">
             <label for="">Mobile Number</label>
-            <input type="number" class="form-control" name="mobile_number" #mobile_number="ngModel" [(ngModel)]="details.mobile_number">
+            <input type="number" class="form-control" name="mobile_number" #mobile_number="ngModel" [(ngModel)]="details.mobile_number" required min=7000000000 max=9999999999>
+            <div *ngIf="!mobile_number?.valid && (mobile_number?.dirty || mobile_number?.touched)" class="error">
+                <div *ngIf="mobile_number.errors?.required">
+                    <small class="text-danger">Mobile Number required</small>
+                </div>
+                <div *ngIf="mobile_number.errors?.min || mobile_number.errors?.max">
+                    <small class="text-danger">Invalid Mobile Number</small>
+                </div>
+            </div>
         </div>
         <div class="col">
             <label for="">Email</label>
-            <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="details.email">
+            <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="details.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$">
+            <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+                <div *ngIf="email.errors?.required">
+                    <small class="text-danger">Email ID required</small>
+                </div>
+                <div *ngIf="email.errors?.pattern">
+                    <small class="text-danger">Invalid Email</small>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row mt-3">
         <div class="col">
             <label for="">Aadhar Number</label>
-            <input type="number" class="form-control" name="aadhar" #aadhar="ngModel" [(ngModel)]="details.aadhar">
+            <input type="number" class="form-control" name="aadhar" #aadhar="ngModel" [(ngModel)]="details.aadhar" required min=100000000000 max=999999999999>
+            <div *ngIf="!aadhar?.valid && (aadhar?.dirty || aadhar?.touched)" class="error">
+                <div *ngIf="aadhar.errors?.required">
+                    <small class="text-danger">Aadhar Number required</small>
+                </div>
+                <div *ngIf="aadhar.errors?.min || aadhar.errors?.max">
+                    <small class="text-danger">Aadhar Mobile Number</small>
+                </div>
+            </div>
         </div>
         <div class="col">
             <label for="">PAN</label>
-            <input type="text" class="form-control" name="pan_card" #pan_card="ngModel" [(ngModel)]="details.pan_card">
+            <input type="text" class="form-control" name="pan_card" #pan_card="ngModel" [(ngModel)]="details.pan_card" required pattern="^[A-Z]{5}[0-9]{4}[A-Z]{1}$">
+            <div *ngIf="!pan_card?.valid && (pan_card?.dirty || pan_card?.touched)" class="error">
+                <div *ngIf="pan_card.errors?.required">
+                    <small class="text-danger">PAN Number required</small>
+                </div>
+                <div *ngIf="pan_card.errors?.pattern">
+                    <small class="text-danger">Invalid PAN Number</small>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
@@ -66,9 +123,41 @@
         <button (click)="submitUpdate(title.value, first_name.value, last_name.value, father_name.value, middle_name.value, mobile_number.value,email.value, aadhar.value, pan_card.value, occupation_type.value, source_of_income.value, gross_annual_income.value)" class="btn btn-primary">Update</button>
     </div>
 </form>
-
+<br><br>
+<!-- Address -->
 <!-- <form #updateAddress="ngForm" class="border p-2">
-    <div class="row">
-
+    <h5>Residential Address</h5>
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">Line 1</label>
+            <input type="text" class="form-control" #line1="ngModel" name="line1" [(ngModel)]="address.line1">
+        </div>
+        <div class="col">
+            <label for="">Line 2</label>
+            <input type="text" class="form-control" #line2="ngModel" name="line2" [(ngModel)]="address.line2">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">Landmark</label>
+            <input type="text" class="form-control" #landmark="ngModel" name="landmark" [(ngModel)]="address.landmark">
+        </div>
+        <div class="col">
+            <label for="">City</label>
+            <input type="text" class="form-control" #city="ngModel" name="city" [(ngModel)]="address.city">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <label for="">State</label>
+            <input type="text" class="form-control" #state="ngModel" name="cust_state" [(ngModel)]="address.custState">
+        </div>
+        <div class="col">
+            <label for="">Pincode</label>
+            <input type="number" class="form-control" #pincode="ngModel" name="pin_code" [(ngModel)]="address.pinCode"> 
+        </div>
+    </div>
+    <div class="container text-center mt-3">
+        <button (click)="updateAddress(line1.value, line2.value, landmark.value, city.value, state.value, pincode.value)" class="btn btn-primary">Update</button>
     </div>
 </form> -->

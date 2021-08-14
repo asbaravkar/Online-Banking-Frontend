@@ -3,9 +3,9 @@
         <!-- Slogan/Info -->
         <div class="jumbotron py-2">
             
-            <img src="../../../assets/js/front-page.jpg" width=750 height=500 alt="">
+            <img src="../../../assets/js/front-page.jpg" width=600 height=400 alt="">
             <p class="lead">
-              <a class="btn btn-primary" routerLink="/login" role="button">Proceed to Login</a>
+              <a class="btn btn-primary btn-lg mt-2" routerLink="/login" role="button">Proceed to Login</a>
             </p>
             
           </div>
@@ -26,7 +26,7 @@
             <div class="card-header bg-primary text-white ">
               Track Approval Status
             </div>
-            <form #trackStatusForm="ngForm" (ngSubmit)="trackStatusForm.form.reset()">
+            <form #trackStatusForm="ngForm">
               <div class="card-body bg-light">
                 <!-- SRN -->
                 <div class="row">

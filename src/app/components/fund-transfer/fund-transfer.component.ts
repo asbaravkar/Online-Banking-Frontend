@@ -25,6 +25,7 @@ export class FundTransferComponent implements OnInit {
 
   fromAccNum:number
 
+  transactionreceipt:any={}
   // submit transfer form
   submitTransferForm(amount:number, from:number, mode:string, remarks:string){
     this.fromAccNum=amount
@@ -33,6 +34,8 @@ export class FundTransferComponent implements OnInit {
         console.log(data)
         if(data == "done"){
           alert("Transferred successfully")
+        } else if(data == "invalid amount"){
+          alert("Invalid amount")
         } else if(data == "insufficient funds"){
           alert("Insufficient funds")
         }
@@ -44,10 +47,6 @@ export class FundTransferComponent implements OnInit {
     )
   } 
 
-
-  resetFields(){
-    
-  }
 
   // get list of transaction
   getTrList(){

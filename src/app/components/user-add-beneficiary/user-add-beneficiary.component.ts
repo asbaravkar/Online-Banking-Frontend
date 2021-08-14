@@ -29,6 +29,8 @@ export class UserAddBeneficiaryComponent implements OnInit {
         alert("Beneficiary added")
       } else if(data == "already present"){
         alert("Already present as beneficiary")
+      } else if(data == "invalid account number"){
+        alert("Invalid Account Number")
       } else {
         alert("Account number didn't matched")
       }

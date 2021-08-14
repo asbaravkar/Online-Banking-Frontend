@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+import { MaterialModule } from './shared/material/material.module';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import { UserChangePasswordComponent } from './components/user-change-password/u
 import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/user-add-beneficiary.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TransactionReceiptComponent } from './components/fund-transfer/transaction-receipt/transaction-receipt.component';
 
 
 
@@ -41,6 +44,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     UserAddBeneficiaryComponent,
     RegistrationComponent,
     PageNotFoundComponent,
+    TransactionReceiptComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
     // BackButtonDisableModule.forRoot({
     //   preserveScrollPosition: true
     // })
