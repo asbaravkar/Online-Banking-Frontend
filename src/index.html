@@ -30,19 +30,44 @@
     <script src="assets/js/detectRightClick.js"></script>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-light bg-primary fixedElement pt-3">
-      <div class="container-fluid">
-        <button onclick="homeClear()" class="navbar-brand mb-0 fw-bold h1 text-white btn btn-primary">DASH Bank</button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixedElement">
+      <button onclick="homeClear()" class="navbar-brand mb-0 fw-bold h2 text-white btn btn-primary">DASH Bank</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent top_nav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/contact-us">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="admin-login">Admin</a>
+          </li>
+        </ul>
+        
       </div>
-
-      <!--  -->
-      
-      <!--  -->
     </nav>
+  <!-- Navbar -->
+
+  <!-- Navbar - 2 -->
+
+
+  <!-- Navbar - 2 -->
 
     <app-root></app-root>
 
+<!-- footer -->
+<div class="navbar navbar-inverse navbar-fixed-bottom bg-primary text-white footer">
+        <div class="container">
+          <p class="navbar-text">©2021 Dash Bank</p>
+        </div>
+      </div>
 
+<!-- end footer -->
     
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -69,12 +94,12 @@
     <script>
       window.onbeforeunload = function () {
         sessionStorage.removeItem('user')
-        localStorage.removeItem('admin')
+        sessionStorage.removeItem('admin')
       }
 
       function homeClear(){
         sessionStorage.removeItem('user');
-        localStorage.removeItem('admin');
+        sessionStorage.removeItem('admin');
         location.replace("http://localhost:4200")
       }
     </script>

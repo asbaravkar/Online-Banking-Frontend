@@ -1,3 +1,4 @@
+import { Info } from './../../shared/models/info.model';
 import { TrList } from './../../../../trList.model';
 import { Statement } from './../../shared/models/statement.model';
 import { UserService } from './../../shared/services/user.service';
@@ -21,12 +22,14 @@ export class UserAccountStatementComponent implements OnInit {
     this.getInfo()
   }
 
-  info:any
+  info:Info = new Info()
+  temp:any
   getInfo(){
     this.serviceUser.getInfo().subscribe(
       data=>{
         console.log(data)
-        this.info=data
+        this.temp=data
+        this.info = this.temp
       }
     )
   }

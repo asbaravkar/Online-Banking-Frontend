@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/shared/services/admin.service';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import { CustDetails } from 'src/app/shared/models/cust-details.model';
 
 @Component({
   selector: 'app-cust-details',
@@ -26,7 +27,8 @@ export class CustDetailsComponent implements OnInit {
     this.getAccount()
   }
 
-  custDetails:any
+  temp:any
+  custDetails:CustDetails = new CustDetails()
   // get particular account details
   getAccount(){
     this.serviceUser.getUserDetails(this.custId).subscribe((data)=>{
@@ -34,7 +36,8 @@ export class CustDetailsComponent implements OnInit {
       if(data == "something went wrong"){
         alert("something went wrong")
       }
-      this.custDetails = data
+      this.temp = data
+      this.custDetails = this.temp[0]
     }, (err)=>{
       console.log(err)
     })
@@ -76,5 +79,9 @@ export class CustDetailsComponent implements OnInit {
       console.log(err)
       
     })
+  }
+
+  backToPendingList(){
+    this._location.back()
   }
 }

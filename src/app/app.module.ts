@@ -22,6 +22,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransactionReceiptComponent } from './components/fund-transfer/transaction-receipt/transaction-receipt.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 
@@ -44,6 +45,7 @@ import { TransactionReceiptComponent } from './components/fund-transfer/transact
     RegistrationComponent,
     PageNotFoundComponent,
     TransactionReceiptComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

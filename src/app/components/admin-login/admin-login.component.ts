@@ -15,9 +15,7 @@ export class AdminLoginComponent implements OnInit {
   adminSession:string
   ngOnInit(): void {
     // this.adminSession = localStorage.getItem('admin')!
-    if(localStorage.getItem('admin')! !='abc'){
-      this.router.navigate(["admin-login"])
-    }
+    
   }
 
   adminLogin(loginForm:NgForm){
@@ -33,6 +31,7 @@ export class AdminLoginComponent implements OnInit {
         alert("Successfully Logged in")
         sessionStorage.setItem('admin', loginForm.value.adminEmail)
         this.router.navigate([`admin-dashboard/${loginForm.value.adminEmail}`])
+        loginForm.form.reset()
       }
     }, (err)=> {
       console.log(err)

@@ -1,6 +1,8 @@
+import { Receipt } from './../../shared/models/receipt.model';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FundTransfer } from 'src/app/shared/models/fund-transfer.model';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-fund-transfer',
@@ -57,16 +59,63 @@ export class FundTransferComponent implements OnInit {
     })
   }
 
-  receipt:any
+  receipt:Receipt
+  temp:any
   // fetch transaction for receipt
   transactionReceipt(){
     
       this.serviceUser.transactionReceipt().subscribe(
         data=>{
           console.log(data)
-          this.receipt=data
+          this.temp=data
+          this.receipt = this.temp
         }
       )
     }
   
+    
+    sweetAlert(){
+      this.transactionReceipt()
+      Swal.fire({
+        title: 'Receipt',
+        html:`  <div class="row mt-3">
+        <div class="col">
+            Paid To Account:
+        </div> 
+        <div class="col">
+            ${this.receipt.paidToAccNum}
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            Amount :
+        </div> 
+        <div class="col">
+            ${this.receipt.amount}
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            On
+        </div>
+        <div class="col">
+            ${this.receipt.transTime}
+        </div> 
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            Remarks :
+        </div>
+        <div class="col">
+            ${this.receipt.remark}
+        </div> 
+    </div>`
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+        
+        }
+      })
+    }
+
 }

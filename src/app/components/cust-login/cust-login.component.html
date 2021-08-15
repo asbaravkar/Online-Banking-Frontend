@@ -1,7 +1,7 @@
 <div class="text-center my-3">
     <h2>Customer Login</h2>
 </div>
-<div class="container align-center w-25 mt-4 border p-3">
+<div class="container align-center w-25 mt-4 border" style="margin-bottom:80px;">
     <form #custLoginForm="ngForm" (ngSubmit)="doCustomerLogin(custLoginForm.value.userId, custLoginForm.value.customerPassword); custLoginForm.form.reset()">
         <!-- Email -->
         <div class="form-group">

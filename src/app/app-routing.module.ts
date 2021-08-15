@@ -1,3 +1,4 @@
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { UserAddBeneficiaryComponent } from './components/user-add-beneficiary/user-add-beneficiary.component';
 import { UserChangePasswordComponent } from './components/user-change-password/user-change-password.component';
@@ -27,7 +28,9 @@ const routes: Routes = [
   {
     path:'home', component:HomeComponent
   },
-  
+  {
+    path:'contact-us', component:ContactUsComponent
+  },
   {
     path:'', redirectTo:'home', pathMatch:'full'
   },

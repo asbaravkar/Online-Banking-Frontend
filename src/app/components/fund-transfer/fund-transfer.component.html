@@ -77,11 +77,12 @@
                             <button (click)="submitTransferForm(fundTransferForm.value.Amount, fundTransferForm.value.FromAccount, fundTransferForm.value.Mode, fundTransferForm.value.Remark)" class="btn btn-success mt-3 ml-3">Make Payment</button> 
                         </div>
                         <div class="col">
-                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="transactionReceipt()" class="float-end btn btn-secondary mt-3">Get Receipt</button>
+                            <!-- <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="transactionReceipt()" class="float-end btn btn-secondary mt-3">Get Receipt</button> -->
+                            <button (click)="sweetAlert()" class="float-end btn btn-secondary mt-3">Recent Receipt</button>
                         </div>
                         <!--  -->
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -144,7 +145,7 @@
                                 </div>
                             </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!--  -->
                     </div>
             </div>

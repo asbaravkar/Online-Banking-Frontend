@@ -7,3 +7,62 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.footer{
+    height:53px;
+    
+}
+
+a {
+    text-decoration: none;
+  }
+  
+  div#top_nav{
+      text-align: center;
+  }
+  
+  div#top_nav li{
+      display: inline;
+      padding: 15px;
+  }
+  
+  
+  
+  div#top_nav a {
+  
+  display: inline-block;
+  position: relative;
+  
+  }
+  
+  div#top_nav a:hover{
+      color: orange;
+  }
+  
+  
+  div#top_nav a:before{
+  
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: orange;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.15s ease-in-out 0s;
+    transition: all 0.15s ease-in-out 0s;
+  
+  }
+  
+  div#top_nav a:hover:before , div#top_nav a.active:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  
+  .active {
+      color: orange;
+  }

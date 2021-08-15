@@ -1,0 +1,31 @@
+export class CustDetails{
+    title:string
+    first_name:string
+    last_name:string
+    middle_name:string
+    mobile_number:number
+    email:string
+    aadhar:number
+    pan_card:string
+    occupation_type:string
+    source_of_income:string
+    gross_annual_income:string
+    line1:string
+    line2:string
+    landmark:string
+    city:string
+    cust_state:string
+    pin_code:number
+    pline1:string
+    pline2:string
+    plandmark:string
+    pcity:string
+    pcust_state:string
+    ppin_code:number
+    dob:Date
+    approval_status:string
+    net_banking:boolean
+    cust_id:number
+    debit_card:boolean
+    pan_doc:string
+}

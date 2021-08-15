@@ -112,7 +112,7 @@ export class RegistrationComponent implements OnInit {
       }
       else
       {
-        alert("There is some error in entered details")
+        alert("Please follow the validations and enter details")
       }
     }
 

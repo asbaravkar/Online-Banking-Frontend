@@ -1,82 +1,111 @@
 <div class="text-center my-3">
-    <h2>Account Details</h2>
+    <h1>Account Details</h1>
 </div>
 <div>
-    <h5 class="mt-5">Basic Information</h5>
+    <h2 class="mt-5">Basic Information</h2>
     <div class="container border p-4">
         <div class="row">
             <div class="col">
-                Title : {{custDetails[0].title}}
+                Title : {{custDetails.title}}
             </div>
             <div class="col">
-                First Name : {{custDetails[0].first_name}}
+                First Name : {{custDetails.first_name}}
             </div>
             <div class="col">
-                Middle Name : {{custDetails[0].middle_name}}
+                Middle Name : {{custDetails.middle_name}}
             </div>
             <div class="col">
-                Last Name : {{custDetails[0].last_name}}
+                Last Name : {{custDetails.last_name}}
             </div>
         </div>
     </div>
     <div class="container border p-4 mt-2">
         <div class="row">
             <div class="col">
-                Mobile Number : {{custDetails[0].mobile_number}}
+                Mobile Number : {{custDetails.mobile_number}}
             </div>
             <div class="col">
-                Email ID : {{custDetails[0].email}}
+                Email ID : {{custDetails.email}}
             </div>
             <div class="col">
-                Aadhar Number : {{custDetails[0].aadhar}}
+                Aadhar Number : {{custDetails.aadhar}}
             </div>
             <div class="col">
-                Pan Number : {{custDetails[0].pan_card}}
+                Pan Number : {{custDetails.pan_card}}
             </div>
         </div>
     </div>
     <div class="container border p-4 mt-2">
         <div class="row">
             <div class="col">
-                Occupation Type : {{custDetails[0].occupation_type}}
+                Occupation Type : {{custDetails.occupation_type}}
             </div>
             <div class="col">
-                Income Source : {{custDetails[0].source_of_income}}
+                Income Source : {{custDetails.source_of_income}}
             </div>
             <div class="col">
-                Gross Annual Income : {{custDetails[0].gross_annual_income}}
+                Gross Annual Income : {{custDetails.gross_annual_income}}
             </div>
             <div class="col">
-                DOB : {{custDetails[0].dob}}
+                DOB : {{custDetails.dob}}
             </div>
         </div>
     </div>
-    <h5 class="mt-5">Residential Address</h5>
+    <h2 class="mt-5">Residential Address</h2>
     <div class="container border p-4">
         <div class="row">
             <div class="col">
-                Line 1 : {{custDetails[0].line1}} <br>
+                Line 1 : {{custDetails.line1}} <br>
             </div>
             <div class="col">
-                Line 2 :{{custDetails[0].line2}}
+                Line 2 :{{custDetails.line2}}
             </div>
         </div>
         <hr>
         <div class="row mt-3">
             <div class="col">
-                Landmark : {{custDetails[0].landmark}}
+                Landmark : {{custDetails.landmark}}
             </div>
             <div class="col">
-                City : {{custDetails[0].city}}
+                City : {{custDetails.city}}
             </div>
             <div class="col">
-                State : {{custDetails[0].cust_state}}
+                State : {{custDetails.cust_state}}
+            </div>
+            <div class="col">
+                Pincode : {{custDetails.pin_code}}
             </div>
         </div>
     </div>
-    <div class="row mt-5">
+    <h2 class="mt-5">Permanent Address</h2>
+    <div class="container border p-4">
+        <div class="row">
+            <div class="col">
+                Line 1 : {{custDetails.pline1}} <br>
+            </div>
+            <div class="col">
+                Line 2 :{{custDetails.pline2}}
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-3">
+            <div class="col">
+                Landmark : {{custDetails.plandmark}}
+            </div>
+            <div class="col">
+                City : {{custDetails.pcity}}
+            </div>
+            <div class="col">
+                State : {{custDetails.pcust_state}}
+            </div>
+            <div class="col">
+                Pincode : {{custDetails.ppin_code}}
+            </div>
+        </div>
+    </div>
+    <div class="row my-5">
         <div class="col-md-6">
-            <a href="dashboard/{{adminId}}" class="btn btn-primary">Back</a>
+            <button (click)="backToPendingList()" class="btn btn-primary">Back</button>
         </div>
         <div class="col-md-6">
             <button (click)="sendApproval()" class="btn btn-success float-end">Approve</button>
