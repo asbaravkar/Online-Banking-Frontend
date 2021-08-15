@@ -108,7 +108,13 @@
     <div class="row mt-4">
         <div class="col">
             <label for="">Occupation Type</label>
-            <input type="text" class="form-control" name="occupation_type" #occupation_type="ngModel" [(ngModel)]="details.occupation_type">
+            <!-- <input type="text" class="form-control" name="occupation_type" #occupation_type="ngModel" [(ngModel)]="details.occupation_type"> -->
+            <select class="form-select" aria-label="Default select example" name="occupation_type" #occupation_type="ngModel" [(ngModel)]="details.occupation_type">
+                <option selected disabled>Occupation Type</option>
+                <option value="Self-Employed">Self-Employed</option>
+                <option value="Working Professional">Working Professional</option>
+                <option value="Student">Student</option>
+              </select>
         </div>
         <div class="col">
             <label for="">Income Source</label>
@@ -116,7 +122,13 @@
         </div>
         <div class="col">
             <label for="">Gross Annual Income</label>
-            <input type="text" class="form-control" name="gross_annual_income" #gross_annual_income="ngModel" [(ngModel)]="details.gross_annual_income">
+            <!-- <input type="text" class="form-control" name="gross_annual_income" #gross_annual_income="ngModel" [(ngModel)]="details.gross_annual_income"> -->
+            <select class="form-select" aria-label="Default select example" name="gross_annual_income" #gross_annual_income="ngModel" [(ngModel)]="details.gross_annual_income">
+                <option selected disabled>Gross Annual Income</option>
+                <option value="0-3 LPA">0-3 LPA</option>
+                <option value="3-8 LPA">3-8 LPA</option>
+                <option value="Above 8 LPA">Above 8 LPA</option>
+              </select>
         </div>
     </div>
     <div class="container text-center mt-3">

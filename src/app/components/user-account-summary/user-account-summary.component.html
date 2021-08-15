@@ -22,8 +22,8 @@
             <ng-container *ngFor="let t of trList">
             <tr>
                 <td>{{t.paidToAccNum}}</td>
-                <td class="text-success">{{t.amount > 0 ? t.amount : ''}}</td>
-                <td class="text-danger">{{t.amount < 0 ? -t.amount : ''}}</td>
+                <td class="text-success">{{t.amount > 0 ? t.amount : '-'}}</td>
+                <td class="text-danger">{{t.amount < 0 ? -t.amount : '-'}}</td>
                 <td>{{t.transTime.slice(0,10)}}</td>
                 <td>{{t.remark}}</td>
             </tr>

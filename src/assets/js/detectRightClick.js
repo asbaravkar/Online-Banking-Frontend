@@ -3,3 +3,4 @@ window.addEventListener('contextmenu', function (e) {
     this.alert("Right click is disabled")
     e.preventDefault(); 
   }, false);
+

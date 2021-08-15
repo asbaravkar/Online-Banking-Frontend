@@ -1,5 +1,4 @@
 
-
 <div class="container align-center border">
     <form #fundTransferForm="ngForm" (ngSubmit)="fundTransferForm.resetForm()">
         <div class="">
@@ -56,23 +55,6 @@
             </div>
             <!--Transaction Date-Time-->
             
-            <!--Maturity Instructions-->
-            <!-- <div class="row mt-5 form-group">
-                <div class="col-md-6">
-                    <label for="">
-                        <h5>Maturity Instructions<span class="text-danger">*</span></h5>
-                    </label>
-                </div>
-                <div class="col-md-6 form-group">
-                    <input name="MaturityInstructions" #MaturityInstructions="ngModel" [(ngModel)]="fund.MaturityInstructions" type="text"
-                        placeholder="Enter Maturity Instructions" class="form-control" required >
-                    <div *ngIf="!MaturityInstructions?.valid && (MaturityInstructions?.dirty || MaturityInstructions?.touched)" class="error">
-                        <div *ngIf="MaturityInstructions.errors?.required">
-                            <small class="text-danger">Maturity Instructions are required</small>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <!--Remark-->
             <div class="row mt-5 form-group">
                 <div class="col-md-6">
@@ -97,74 +79,76 @@
                         <div class="col">
                             <button data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="transactionReceipt()" class="float-end btn btn-secondary mt-3">Get Receipt</button>
                         </div>
+                        <!--  -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Transaction Receipt</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        Reference ID
+                                    </div> 
+                                    <div class="col">
+                                        {{receipt.referenceId}}
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col">
+                                            Mode :
+                                        </div>
+                                        <div class="col">
+                                            {{receipt.mode}}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            Paid To Account:
+                                        </div> 
+                                        <div class="col">
+                                            {{receipt.paidToAccNum}}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            Amount :
+                                        </div> 
+                                        <div class="col">
+                                            {{receipt.amount}}
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            On
+                                        </div>
+                                        <div class="col">
+                                            {{receipt.transTime.slice(0,10)+' '+receipt.transTime.slice(11,16)}}
+                                        </div> 
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            Remarks :
+                                        </div>
+                                        <div class="col">
+                                            {{receipt.remark}}
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!--  -->
                     </div>
             </div>
         </div>
     </form>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Transaction Receipt</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row mt-3">
-              <div class="col">
-                  Reference ID
-              </div> 
-              <div class="col">
-                  {{receipt.referenceId}}
-              </div>
-          </div>
-          <div class="row mt-3">
-                <div class="col">
-                    Mode :
-                </div>
-                <div class="col">
-                    {{receipt.mode}}
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    Paid To Account:
-                </div> 
-                <div class="col">
-                    {{receipt.paidToAccNum}}
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    Amount :
-                </div> 
-                <div class="col">
-                    {{receipt.amount}}
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    On
-                </div>
-                <div class="col">
-                    {{receipt.transTime.slice(0,10)+' '+receipt.transTime.slice(11,16)}}
-                </div> 
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    Remarks :
-                </div>
-                <div class="col">
-                    {{receipt.remark}}
-                </div> 
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>

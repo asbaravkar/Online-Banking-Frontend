@@ -1,6 +1,5 @@
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { FundTransfer } from 'src/app/shared/models/fund-transfer.model';
 
 @Component({
@@ -25,7 +24,6 @@ export class FundTransferComponent implements OnInit {
 
   fromAccNum:number
 
-  transactionreceipt:any={}
   // submit transfer form
   submitTransferForm(amount:number, from:number, mode:string, remarks:string){
     this.fromAccNum=amount

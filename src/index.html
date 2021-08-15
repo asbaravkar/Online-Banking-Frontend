@@ -32,7 +32,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-light bg-primary fixedElement pt-3">
       <div class="container-fluid">
-        <a href="./" class="navbar-brand mb-0 fw-bold h1 text-white">DASH Bank</a>
+        <button onclick="homeClear()" class="navbar-brand mb-0 fw-bold h1 text-white btn btn-primary">DASH Bank</button>
       </div>
 
       <!--  -->
@@ -62,7 +62,20 @@
 
     <script>
             window.onunload = function () {
-        sessionStorage.removeItem('key');
+        sessionStorage.removeItem('user');
+        localStorage.removeItem('admin')
+      }
+    </script>
+    <script>
+      window.onbeforeunload = function () {
+        sessionStorage.removeItem('user')
+        localStorage.removeItem('admin')
+      }
+
+      function homeClear(){
+        sessionStorage.removeItem('user');
+        localStorage.removeItem('admin');
+        location.replace("http://localhost:4200")
       }
     </script>
   </body>

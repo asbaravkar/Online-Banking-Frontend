@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
-import { MaterialModule } from './shared/material/material.module';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,7 +52,7 @@ import { TransactionReceiptComponent } from './components/fund-transfer/transact
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    
     // BackButtonDisableModule.forRoot({
     //   preserveScrollPosition: true
     // })
