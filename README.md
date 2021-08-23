@@ -32,3 +32,5 @@ User is required to enter or select every field during registration process. Dur
 - Account approval/rejection
 
 
+## Checkout screen shots inside repo
+
