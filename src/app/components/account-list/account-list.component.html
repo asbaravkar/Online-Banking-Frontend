@@ -1,9 +1,9 @@
-<div class="text-center my-3">
+<div class="text-center my-3" >
     <h2>Account Opening Requests</h2>
 </div>
 
 <!-- List of unapproved requests -->
-<table class="table table-bordered text-center mt-5 table-hover">
+<table class="table table-bordered text-center mt-5 table-hover" style="margin-bottom: 260px;">
     <thead>
         <tr>
             <th>Customer ID</th>
@@ -19,7 +19,6 @@
             <td>{{p.first_name}}</td>
             <td>{{p.last_name}}</td>
             <td><a class="btn btn-primary" [routerLink]="['details/', p.cust_id]">View</a></td>
-            
         </tr>
     </tbody>
 </table>

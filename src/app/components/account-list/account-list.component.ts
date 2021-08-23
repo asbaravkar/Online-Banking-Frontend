@@ -9,9 +9,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./account-list.component.css']
 })
 export class AccountListComponent implements OnInit {
-
   accountList:RegisterAccount = new RegisterAccount()
 
+  
   constructor(private service:AdminService, private route:ActivatedRoute) { }
 
   adminId:number
@@ -25,12 +25,12 @@ export class AccountListComponent implements OnInit {
   getPendingList(adminId:number){
     this.service.getUnapprovedAccountList(adminId).subscribe((data)=>{
       this.pendingList = data
-      console.log(data)
+      // console.log(data)
       if(data == "something went wrong"){
         alert("something went wrong")
       }
     }, (err)=>{
-      console.log(err)
+      // console.log(err)
     })
   }
 }

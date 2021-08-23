@@ -23,10 +23,11 @@ export class ForgotLoginPasswordComponent implements OnInit {
 
   otp:number
   obj:any
+
   // get otp for forgot password
   getOtp(userId:number){
     this.serviceUser.forgotPasswordOtp(userId).subscribe((data)=>{
-      console.log(data)
+      // console.log(data)
       if(data != -1){
         alert("OTP sent to registered email id")
       }
@@ -35,13 +36,13 @@ export class ForgotLoginPasswordComponent implements OnInit {
       if(this.otp == -1) alert("Invalid userID")
       else if(data == "something went wrong"){
         alert("something went wrong")
-      }
+      } 
     }, (err)=>{
-      console.log(err)
+      // console.log(err)
     })
   }
 
-
+  // If OTP is valid redirect to Set New Password for that particular account
   goToSetNewPassword(otp:number, userId:number){
     if(this.otp == otp){
       sessionStorage.setItem('setPassword',userId.toString())

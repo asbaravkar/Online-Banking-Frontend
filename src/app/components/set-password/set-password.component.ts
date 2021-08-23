@@ -17,6 +17,7 @@ export class SetPasswordComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private serviceUser:UserService, private router:Router) { }
 
+  // Check Session Storage and then allow
   userId:number
   ngOnInit(): void {
     this.userId = this.route.snapshot.params.id
@@ -30,7 +31,7 @@ export class SetPasswordComponent implements OnInit {
   // set password
   setPassword(p1:string, p2:string){
     this.serviceUser.setNewLoginPassword(this.userId, p1, p2).subscribe((data)=>{
-      console.log(data)
+      // console.log(data)
       if(data == "set"){
         alert("Password updated")
         this.router.navigate(['login'])
@@ -38,7 +39,7 @@ export class SetPasswordComponent implements OnInit {
         alert("Please try again")
       }
     }, (err)=>{
-      console.log(err)
+      // console.log(err)
       
     })
   }

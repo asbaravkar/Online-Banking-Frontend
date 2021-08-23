@@ -22,6 +22,8 @@ export class ForgotUserIdComponent implements OnInit {
 
   obj:any
   otp:number
+
+  // get OTP for forgot User ID
   getOtp(ac:number){
     this.serviceUser.forgotIdOtp(ac).subscribe((data)=>{
       if(data == "wrong account number"){
@@ -34,6 +36,7 @@ export class ForgotUserIdComponent implements OnInit {
     })
   }
 
+  // Send UserID to Customer that he has forgotten
   getUserIdByMail(ac:number, otp:number){
     if(this.otp == otp) {
       this.serviceUser.receiveUserId(ac).subscribe((data)=>{

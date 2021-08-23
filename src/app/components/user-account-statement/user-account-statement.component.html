@@ -1,22 +1,23 @@
 
 <div class="container">
-    
     <form #form="ngForm">
         <div class="row">
             <div class="col">
+                <!-- From Date -->
                 <label for=""><h5>From</h5></label>
-                <input type="date" name="from" class="form-control" #from>
+                <input type="date" name="from" class="form-control" #from max="{{currDate | date:'yyyy-MM-dd'}}">
             </div>
             <div class="col">
+                <!-- To Date -->
                 <label for=""><h5>To</h5></label>
-                <input type="date" name="to" class="form-control" #to>
+                <input type="date" name="to" class="form-control" #to max="{{currDate | date:'yyyy-MM-dd'}}">
             </div>
         </div>
         <div class="container text-center">
             <button (click)="fetchTransactions(from.value, to.value)" class="btn btn-primary mt-5">Get Transactions</button>
         </div>
     </form>
-    <!--  -->
+    <!-- Table of Transaction between 2 dates -->
     <table class="table table-bordered table-hover my-5">
         <thead>
             <tr>
@@ -52,7 +53,6 @@
                 <td>{{t.mode}}</td>
                 <td>{{t.amount}}</td>
                 <td>{{t.tranStatus}}</td>
-                
             </tr> 
         </tbody>
     </table>

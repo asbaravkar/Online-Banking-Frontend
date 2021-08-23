@@ -25,9 +25,9 @@ export class UserChangePasswordComponent implements OnInit {
   changePassword(lp:string, clp:string, tp:string, ctp:string){
     this.serviceUser.changePassword(lp, clp, tp, ctp).subscribe(
       data=>{
-        console.log(data)
+        // console.log(data)
       }, err=>{
-        console.log(err)
+        // console.log(err)
         if(err.error.text == "changed"){
           alert("Password changed successful")
         } else if(err.error.text == "login password not matched"){
@@ -44,7 +44,7 @@ export class UserChangePasswordComponent implements OnInit {
   changeLoginPassword(pass:string, confirmPass:string){
     this.serviceUser.changeLoginPassword(pass,confirmPass).subscribe(
       data =>{
-        console.log(data)
+        // console.log(data)
         if(data == "set"){
           alert("Login password updated")
         } else if(data == "password didn't matched"){
@@ -58,7 +58,7 @@ export class UserChangePasswordComponent implements OnInit {
 
   // change transaction password
   changeTransactionPassword(pass:string, confirmPass:string){
-    console.log(pass)
+    // console.log(pass)
     this.serviceUser.changeTransactionPassword(pass, confirmPass).subscribe(
       data=>{
         if(data == "set"){

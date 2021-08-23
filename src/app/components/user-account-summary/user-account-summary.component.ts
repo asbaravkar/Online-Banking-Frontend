@@ -32,13 +32,13 @@ export class UserAccountSummaryComponent implements OnInit {
   // get list of top 5 transaction
   getAccountSummary(){
     this.serviceUser.accountSummary(this.userId).subscribe((data)=>{
-      console.log(data)
+      // console.log(data)
       this.obj = data
       this.accNo = this.obj.accountnumber
       this.bal = this.obj.balance
       this.trList = this.obj.transactions
     }, (err)=>{
-      console.log(err)
+      // console.log(err)
     })
   }
 

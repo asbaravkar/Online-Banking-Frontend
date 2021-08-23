@@ -11,6 +11,7 @@ export class UserDashboardComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private serviceUser:UserService, private router:Router) { }
 
+  // Maintain Last Login Date Time
   lastTime:string
   userId:number
   ngOnInit(): void {
@@ -25,11 +26,12 @@ export class UserDashboardComponent implements OnInit {
 
   nameOnDashboard:string
   obj:any
+
   // name on dashboard
   getName(userId:number){
     this.serviceUser.getName(userId).subscribe(
       data=>{
-        console.log(data)
+        // console.log(data)
         this.obj = data
         console.log(this.obj.fname)
         this.nameOnDashboard=this.obj
@@ -38,7 +40,7 @@ export class UserDashboardComponent implements OnInit {
   }
 
   logoutTime = new Date()
-  // logout
+  // logout and clearing sessions
   logout(){
     sessionStorage.removeItem('user')
     this.router.navigate(['/'])

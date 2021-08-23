@@ -9,9 +9,10 @@ import { AdminService } from 'src/app/shared/services/admin.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor(private router:Router, private service:AdminService, private route:ActivatedRoute) { }
+  constructor(private router:Router, private route:ActivatedRoute) { }
 
- adminId:number
+  adminId:number
+  // Check for Session and then allow
   ngOnInit(): void {
     this.adminId = this.route.snapshot.params.id
     if(sessionStorage.getItem('admin')! !=this.adminId.toString()){
@@ -20,7 +21,6 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   
-
   //logout
   adminLogout(){
     alert("Successfully logged out")

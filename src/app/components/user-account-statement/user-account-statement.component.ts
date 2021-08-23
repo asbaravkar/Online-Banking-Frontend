@@ -24,10 +24,12 @@ export class UserAccountStatementComponent implements OnInit {
 
   info:Info = new Info()
   temp:any
+
+  // To display Customer Detail - Basic
   getInfo(){
     this.serviceUser.getInfo().subscribe(
       data=>{
-        console.log(data)
+        // console.log(data)
         this.temp=data
         this.info = this.temp
       }
@@ -37,19 +39,20 @@ export class UserAccountStatementComponent implements OnInit {
   ac:number
   obj:any
   trList:TrList[]=[]
+
+  // Fetch Transaction between two dates
   fetchTransactions(from:string, to:string){
     this.ac = this.info.acno
     this.serviceUser.getTrRange(this.ac,from,to).subscribe(
       data=>{
-        console.log(data)
+        // console.log(data)
         this.obj=data
         this.trList=this.obj
       }
     )
   }
 
-  getReceipt(refNumber:number){
-    
-  }
+  // Restrict Date upto Current Date only
+  currDate = new Date()
 
 }

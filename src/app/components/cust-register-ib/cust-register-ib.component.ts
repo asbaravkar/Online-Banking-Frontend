@@ -1,7 +1,6 @@
 import { RegisterInternetBanking } from './../../shared/models/register-internet-banking.model';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl} from '@angular/forms';
 import {Location} from '@angular/common';
 
 
@@ -12,12 +11,6 @@ import {Location} from '@angular/common';
 })
 export class CustRegisterIbComponent implements OnInit {
 
-  confirmPasswordValidation(control:AbstractControl):{[key: string]:boolean}|null{
-    if(control.parent?.get('password')?.value !== control.value){
-      return {'cpass':true}
-    }
-    return null;
-  }
 
   constructor(public custservice:UserService, private _location:Location) { }
 
@@ -40,22 +33,24 @@ export class CustRegisterIbComponent implements OnInit {
 
   otp:number
   obj:any
+
   // otp
   getOtp(acNo:number){
     this.custservice.getOtpIb(acNo).subscribe(
       data=>{
         alert("OTP sent on registered email")
-        console.log(data)
+        // console.log(data)
         this.obj = data
         this.otp = this.obj
       }, err=>{
-        console.log(err)
+        // console.log(err)
         if(err.error == "invalid accnum")
         alert("Invalid Account Number")
       }
     )
   }
 
+  // Main Register Account 
   registerMainIb(ac:number, lp:string, clp:string, tp:string, ctp:string){
     this.custservice.registerIb(ac, lp, clp, tp, ctp).subscribe(
       data=>{

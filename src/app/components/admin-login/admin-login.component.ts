@@ -14,13 +14,12 @@ export class AdminLoginComponent implements OnInit {
 
   adminSession:string
   ngOnInit(): void {
-    // this.adminSession = localStorage.getItem('admin')!
     
   }
 
-  adminLogin(loginForm:NgForm){
+    adminLogin(loginForm:NgForm){
     this.service.adminLogin(loginForm.value.adminEmail, loginForm.value.adminPassword).subscribe((data)=>{
-      console.log(data);
+      // console.log(data);
       if(data=="invalid id"){
         alert("Invalid ID")
       } else if(data == "invalid password"){
@@ -34,7 +33,7 @@ export class AdminLoginComponent implements OnInit {
         loginForm.form.reset()
       }
     }, (err)=> {
-      console.log(err)
+      // console.log(err)
      
     })
   }

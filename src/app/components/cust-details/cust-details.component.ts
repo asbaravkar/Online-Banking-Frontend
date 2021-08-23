@@ -14,11 +14,11 @@ import { CustDetails } from 'src/app/shared/models/cust-details.model';
 })
 export class CustDetailsComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private service:AdminService, private serviceUser:UserService, 
-    private router:Router, private _location: Location) { }
+  constructor(private route:ActivatedRoute, private service:AdminService, private serviceUser:UserService, private _location: Location) { }
 
   custId:number
-  customer:RegisterAccount = new RegisterAccount()
+  temp:any
+  custDetails:CustDetails = new CustDetails()
   adminId:number
   
   ngOnInit(): void {
@@ -27,19 +27,18 @@ export class CustDetailsComponent implements OnInit {
     this.getAccount()
   }
 
-  temp:any
-  custDetails:CustDetails = new CustDetails()
+
   // get particular account details
   getAccount(){
     this.serviceUser.getUserDetails(this.custId).subscribe((data)=>{
-      console.log(data)
+      // console.log(data)
       if(data == "something went wrong"){
         alert("something went wrong")
       }
       this.temp = data
       this.custDetails = this.temp[0]
     }, (err)=>{
-      console.log(err)
+      // console.log(err)
     })
   }
 
@@ -81,6 +80,7 @@ export class CustDetailsComponent implements OnInit {
     })
   }
 
+  // back button navigation
   backToPendingList(){
     this._location.back()
   }

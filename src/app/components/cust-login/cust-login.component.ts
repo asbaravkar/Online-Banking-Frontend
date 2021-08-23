@@ -20,13 +20,14 @@ export class CustLoginComponent implements OnInit {
     }
   }
 
+  // Account Lock Tracker
   counter=3
 
   // login function
   doCustomerLogin(userId:number, password:string){
     this.custservice.userLogin(userId, password).subscribe((data)=>{
-      console.log(data)
-      if(this.counter < 1){
+      // console.log(data)
+      if(this.counter < 2){
         this.lockAccount(userId)
       }
       if(data == "login success"){
@@ -42,11 +43,12 @@ export class CustLoginComponent implements OnInit {
         alert("Account locked. Please use forgot password")
       }
     }, (err)=> {
-      console.log(err)
+      // console.log(err)
       
     })
   }
 
+  // Lock Account once attempts exceeded
   lockAccount(userId:number){
     this.custservice.lockAccount(userId).subscribe((data)=>{
       console.log(data)

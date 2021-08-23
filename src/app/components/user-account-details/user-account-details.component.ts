@@ -1,7 +1,6 @@
 import { AccountDetails } from './../../shared/models/account-details.model';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Address } from 'src/app/shared/models/address.model';
 
 @Component({
@@ -15,13 +14,8 @@ export class UserAccountDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchDetails()
-    this.fetchAddress()
+    //this.fetchAddress()
     console.log(this.details)
-  }
-
-  // update address
-  updateAddress(line1:string, line2:string, landmark:string, city:string, state:string, pincode:number){
-
   }
 
   
@@ -54,7 +48,7 @@ export class UserAccountDetailsComponent implements OnInit {
         this.details=this.obj[0]
         this.custId = this.details.cust_id
       }, err=>{
-        console.log(err)
+        // console.log(err)
       }
     )
   }

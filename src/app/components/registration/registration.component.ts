@@ -136,7 +136,7 @@ export class RegistrationComponent implements OnInit {
     debugger
     this.serviceUser.userRegistration(obj).subscribe(
       data=>{
-        console.log(data)
+        // console.log(data)
         if(data == "inserted"){
           alert("Account opening process started. You'll recieve Reference number on registered email.")
           this._location.back()

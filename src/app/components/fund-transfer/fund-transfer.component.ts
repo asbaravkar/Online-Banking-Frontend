@@ -31,9 +31,10 @@ export class FundTransferComponent implements OnInit {
     this.fromAccNum=amount
     this.serviceUser.fundTransfer(amount, from, mode, remarks).subscribe(
       data=>{
-        console.log(data)
+        // console.log(data)
         if(data == "done"){
           alert("Transferred successfully")
+          
         } else if(data == "invalid amount"){
           alert("Invalid amount")
         } else if(data == "insufficient funds"){
@@ -41,7 +42,7 @@ export class FundTransferComponent implements OnInit {
         }
       },
       err=>{
-        console.log(err)
+        // console.log(err)
          
       }
     )
@@ -51,7 +52,7 @@ export class FundTransferComponent implements OnInit {
   // get list of transaction
   getTrList(){
     this.serviceUser.getTransactionList().subscribe((data)=>{
-      console.log(data)
+      // console.log(data)
       this.bList = data
       console.log(this.bList)
     }, (err)=>{
@@ -66,14 +67,13 @@ export class FundTransferComponent implements OnInit {
     
       this.serviceUser.transactionReceipt().subscribe(
         data=>{
-          console.log(data)
+          // console.log(data)
           this.temp=data
           this.receipt = this.temp
         }
       )
     }
   
-    
     sweetAlert(){
       this.transactionReceipt()
       Swal.fire({

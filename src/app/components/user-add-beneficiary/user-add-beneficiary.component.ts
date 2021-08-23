@@ -2,7 +2,7 @@ import { UserService } from './../../shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Beneficiary } from './../../shared/models/add-beneficiary.model';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-user-add-beneficiary',
@@ -14,17 +14,17 @@ export class UserAddBeneficiaryComponent implements OnInit {
   // object of add beneficiary to be bind with
   payee:Beneficiary = new Beneficiary()
 
-  constructor(private route:ActivatedRoute, private serviceUser:UserService, private router:Router) { }
+  constructor(private route:ActivatedRoute, private serviceUser:UserService) { }
 
   ngOnInit(): void {
     
   }
 
 
+  // Add Beneficiary to Current Account
   addBeneficiary(name:string, to1:number, to2:number){
-    
     this.serviceUser.addBeneficiary(name, to1, to2).subscribe((data)=>{
-      console.log(data)
+      // console.log(data)
       if(data == "added"){
         alert("Beneficiary added")
       } else if(data == "already present"){
@@ -35,7 +35,7 @@ export class UserAddBeneficiaryComponent implements OnInit {
         alert("Account number didn't matched")
       }
     }, (err)=>{
-      console.log(err)
+      // console.log(err)
       
     })
   }
